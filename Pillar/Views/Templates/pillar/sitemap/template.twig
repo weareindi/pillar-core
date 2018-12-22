@@ -1,0 +1,15 @@
+<div class="pillar-sitemap">
+    {% include 'pillar/header' with {
+        'heading': 'Sitemap'
+    } only %}
+
+    <div class="pillar-sitemap__list">
+        {% if pages is defined and pages is not empty %}
+            <ol class="pillar-sitemap__items">
+                {% for page in pages %}
+                <li class="pillar-sitemap__item"><a href="/pages/{{ page.url }}" class="pillar-sitemap__link">{{ page.url }}</a></li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </div>
+</div>

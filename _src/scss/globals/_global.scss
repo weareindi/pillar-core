@@ -1,0 +1,11 @@
+.pillar {
+    width: 100%;
+    margin: ($font-size-default * 4) 0 0;
+    padding: 0;
+
+    background-color: darken($color-outer-space, 4%);
+}
+
+.pillar-hide {
+    display: none;
+}

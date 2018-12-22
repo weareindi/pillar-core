@@ -1,0 +1,68 @@
+.pillar-button {
+    display: inline-block;
+    vertical-align: top;
+
+    margin: 0;
+    padding: 22px;
+    border: 0;
+
+    background-color: $color-outer-space;
+}
+
+.pillar-button__icon {
+    margin: 0;
+
+    display: none;
+    vertical-align: top;
+
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pillar-button__label {
+    display: none;
+    vertical-align: top;
+
+    font-family: $font-stack-default;
+    font-size: $font-size-default;
+    line-height: 20px;
+
+    color: #FFF;
+}
+
+.pillar-button--sitemap {
+    .pillar-button__icon {
+        display: inline-block;
+        margin-top: 1px;
+        margin-bottom: 1px;
+
+        width: 20px;
+        height: 18px;
+
+        background-image: url($icon-sitemap);
+    }
+}
+
+.pillar-button--patterns {
+    .pillar-button__icon {
+        display: inline-block;
+        margin-top: 1px;
+        margin-bottom: 1px;
+
+        width: 20px;
+        height: 18px;
+
+        background-image: url($icon-patterns);
+    }
+}
+
+@media (min-width: 640px) {
+    .pillar-button__icon {
+        margin-right: 10px;
+    }
+
+    .pillar-button__label {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,13 @@
+{% if type is defined %}
+<button type="{{ type }}" name="{{ name }}" class="pillar-button {{ classes }}">
+    <span class="pillar-button__icon"></span>
+    <span class="pillar-button__label">{{ label }}</span>
+</button>
+{% endif %}
+
+{% if href is defined %}
+<a href="{{ href }}" class="pillar-button {{ classes }}">
+    <span class="pillar-button__icon"></span>
+    <span class="pillar-button__label">{{ label }}</span>
+</a>
+{% endif %}

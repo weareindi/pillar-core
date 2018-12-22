@@ -1,0 +1,20 @@
+<div class="pillar-breadcrumbs">
+    {% set pattern_url = 'patterns' %}
+
+    {% set url_parts = url|split('/') %}
+
+    <span class="pillar-breadcrumbs__crumb">
+        <a href="/{{ pattern_url }}" class="pillar-breadcrumbs__button">{{ pattern_url }}</a>
+    </span>
+
+    {% for url_part in url_parts %}
+        {% set pattern_url = pattern_url ~ '/' ~ url_part %}
+        <span class="pillar-breadcrumbs__crumb">
+            / <a href="/{{ pattern_url }}" class="pillar-breadcrumbs__button">{{ url_part }}</a>
+        </span>
+    {% endfor %}
+
+    <span class="pillar-breadcrumbs__crumb">
+        <a href="/{{ pattern_url }}/isolate" class="pillar-breadcrumbs__button pillar-breadcrumbs__button--isolate">isolate</a>
+    </span>
+</div>

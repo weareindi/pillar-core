@@ -1,0 +1,39 @@
+.pillar-sitemap {
+    padding: ($font-size-default * 4) $font-size-default;
+}
+
+.pillar-sitemap__list {}
+
+.pillar-sitemap__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pillar-sitemap__item {
+    + .pillar-sitemap__item {
+        margin: 10px 0 0;
+    }
+}
+
+.pillar-sitemap__link {
+    padding: 0 0 0 28px;
+
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    word-wrap: break-word;
+
+    color: #a5e88d;
+
+    background-image: url($icon-link);
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

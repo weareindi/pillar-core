@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project Sitemap | Pillar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {# Pillar Specific #}
+        <style media="screen">
+            {{ asset('pillar-css')|raw }}
+        </style>
+    </head>
+    <body class="pillar">
+        {% include 'pillar/colour-picker-switches' %}
+        {% include 'pillar/beam' %}
+
+        {% if pages is defined and pages is not empty %}
+            {% include 'pillar/sitemap' with {
+                'pages': pages
+            } %}
+        {% endif %}
+
+        {# Pillar Specific #}
+        <script type="application/javascript">
+            {{ asset('pillar-js')|raw }}
+        </script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{% if groups is defined %}
+<div class="pillar-groups">
+    {% for name, patterns in groups %}
+        <div class="pillar-group">
+            <div class="pillar-group__header">
+                {% include 'pillar/header' with {
+                    'heading': name
+                } only %}
+            </div>
+
+            <div class="pillar-group__patterns">
+                {% for pattern in patterns %}
+                    {% include 'pillar/pattern' with pattern only %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}

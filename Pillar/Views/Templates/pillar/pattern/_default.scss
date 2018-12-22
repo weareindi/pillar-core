@@ -1,0 +1,36 @@
+.pillar-pattern {
+    ~ .pillar-pattern {
+        margin: ($font-size-default * 4) 0 0;
+    }
+}
+
+.pillar-pattern__bg {
+    margin: $font-size-default 0 0;
+}
+
+.pillar-pattern__render {
+    margin: $font-size-default 0 0;
+    padding: $font-size-default;
+}
+
+@media (min-width: 800px) {
+    .pillar-pattern__upper {
+        display: flex;
+
+        overflow: hidden;
+    }
+
+    .pillar-pattern__breadcrumbs {
+        display: flex;
+        float: left;
+
+        flex-grow: 1;
+
+        align-items: flex-end;
+    }
+
+    .pillar-pattern__bg {
+        float: right;
+        margin: 0;
+    }
+}

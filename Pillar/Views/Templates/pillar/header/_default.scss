@@ -1,0 +1,12 @@
+.pillar-header {
+    margin: ($font-size-default * 3) 0;
+
+    letter-spacing: normal;
+}
+
+.pillar-header__heading {
+    font-family: sans-serif;
+    font-size: ($font-size-default * 3);
+
+    color: $color-white;
+}

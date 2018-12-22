@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project Patterns | Pillar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {# Pillar Specific #}
+        <style media="screen">
+            {{ asset('pillar-css')|raw }}
+        </style>
+
+        {# Library Specific #}
+        {% include 'common/html-head' ignore missing %}
+    </head>
+    <body class="pillar">
+        {# Library Specific #}
+        {% include 'common/body-head' ignore missing %}
+
+        {% include 'pillar/colour-picker-switches' %}
+        {% include 'pillar/beam' %}
+
+        {% if groups is defined %}
+            {% include 'pillar/groups' with groups %}
+        {% endif %}
+
+        {# Pillar Specific #}
+        <script type="application/javascript">
+            {{ asset('pillar-js')|raw }}
+        </script>
+
+        {# Library Specific #}
+        {% include 'common/body-footer' ignore missing %}
+    </body>
+</html>

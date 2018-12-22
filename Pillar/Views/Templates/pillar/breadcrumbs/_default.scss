@@ -1,0 +1,30 @@
+.pillar-breadcrumbs {
+    font-family: sans-serif;
+    font-size: $font-size-default;
+    letter-spacing: normal;
+
+    color: transparentize($color-white, 0.8);
+
+    cursor: default;
+}
+
+.pillar-breadcrumbs__crumb {
+    display: inline-block;
+
+    white-space: nowrap;
+}
+
+.pillar-breadcrumbs__button {
+    line-height: ($font-size-default * 1.6);
+    text-decoration: none;
+
+    color: $color-granny-smith-apple;
+}
+
+.pillar-breadcrumbs__button--isolate {
+    margin: 0 0 0 1em;
+    padding: 0 1em;
+
+    color: $color-black;
+    background-color: $color-granny-smith-apple;
+}

@@ -1,0 +1,51 @@
+{% set render %}
+    {% include template with data only %}
+{% endset %}
+
+<div class="pillar-codeviewer">
+    {% if template is defined and template is not empty %}
+        <input type="checkbox" id="pillar-codeviewer-twig-pre-{{ uid }}" name="pillar-codeviewer-twig-{{ uid }}" class="pillar-codeviewer__switch pillar-codeviewer__switch--twig-pre">
+        <input type="checkbox" id="pillar-codeviewer-twig-post-{{ uid }}" name="pillar-codeviewer-twig-{{ uid }}" class="pillar-codeviewer__switch pillar-codeviewer__switch--twig-post">
+    {% endif %}
+
+    {% if data is defined and data is not empty %}
+        <input type="checkbox" id="pillar-codeviewer-json-pre-{{ uid }}" name="pillar-codeviewer-json-{{ uid }}" class="pillar-codeviewer__switch pillar-codeviewer__switch--json-pre">
+        <input type="checkbox" id="pillar-codeviewer-json-post-{{ uid }}" name="pillar-codeviewer-json-{{ uid }}" class="pillar-codeviewer__switch pillar-codeviewer__switch--json-post">
+    {% endif %}
+
+    {% if template is defined and template is not empty %}
+    <div class="pillar-codeviewer__frame pillar-codeviewer__frame--twig">
+        <div class="pillar-codeviewer__nav">
+            <span class="pillar-codeviewer__label">TWIG</span>
+            <label class="pillar-codeviewer__button pillar-codeviewer__button--twig-pre checkboxradio" for="pillar-codeviewer-twig-pre-{{ uid }}">Pre</label>
+            <label class="pillar-codeviewer__button pillar-codeviewer__button--twig-post checkboxradio" for="pillar-codeviewer-twig-post-{{ uid }}">Post</label>
+        </div>
+
+        <div class="pillar-codeviewer__code pillar-codeviewer__code--twig-pre">
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--twig"><code>{{ source(template, ignore_missing = true)|trim|escape }}</code></pre>
+        </div>
+
+        <div class="pillar-codeviewer__code pillar-codeviewer__code--twig-post">
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--html"><code>{{ render|trim|escape }}</code></pre>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if data is defined and data is not empty %}
+    <div class="pillar-codeviewer__frame pillar-codeviewer__frame--json">
+        <div class="pillar-codeviewer__nav">
+            <span class="pillar-codeviewer__label">JSON</span>
+            <label class="pillar-codeviewer__button pillar-codeviewer__button--json-pre checkboxradio" for="pillar-codeviewer-json-pre-{{ uid }}">Pre</label>
+            <label class="pillar-codeviewer__button pillar-codeviewer__button--json-post checkboxradio" for="pillar-codeviewer-json-post-{{ uid }}">Post</label>
+        </div>
+
+        <div class="pillar-codeviewer__code pillar-codeviewer__code--json-pre">
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data_parent|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
+        </div>
+
+        <div class="pillar-codeviewer__code pillar-codeviewer__code--json-post">
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
+        </div>
+    </div>
+    {% endif %}
+</div>

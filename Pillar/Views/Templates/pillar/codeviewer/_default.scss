@@ -1,0 +1,169 @@
+.pillar-codeviewer {
+    font-size: $font-size-default;
+    letter-spacing: normal;
+}
+
+.pillar-codeviewer__switch {
+    display: none;
+}
+
+.pillar-codeviewer__switch--twig {
+    &:checked {
+        ~ .pillar-codeviewer__nav {
+            .pillar-codeviewer__button--twig {
+                background-color: lighten($color-outer-space, 0.2);
+                opacity: 1;
+            }
+        }
+
+        ~ .pillar-codeviewer__frame--twig {
+            display: block;
+        }
+    }
+}
+
+.pillar-codeviewer__switch--twig-pre {
+    &:checked {
+        ~ .pillar-codeviewer__frame {
+            .pillar-codeviewer__nav {
+                .pillar-codeviewer__button--twig-pre {
+                    background-color: lighten($color-outer-space, 0.2);
+                    opacity: 1;
+                }
+            }
+
+            .pillar-codeviewer__code--twig-pre {
+                display: block;
+            }
+        }
+    }
+}
+
+.pillar-codeviewer__switch--twig-post {
+    &:checked {
+        ~ .pillar-codeviewer__frame {
+            .pillar-codeviewer__nav {
+                .pillar-codeviewer__button--twig-post {
+                    background-color: lighten($color-outer-space, 0.2);
+                    opacity: 1;
+                }
+            }
+
+            .pillar-codeviewer__code--twig-post {
+                display: block;
+            }
+        }
+    }
+}
+
+.pillar-codeviewer__switch--json {
+    &:checked {
+        ~ .pillar-codeviewer__nav {
+            .pillar-codeviewer__button--json {
+                background-color: lighten($color-outer-space, 0.2);
+                opacity: 1;
+            }
+        }
+
+        ~ .pillar-codeviewer__frame--json {
+            display: block;
+        }
+    }
+}
+
+.pillar-codeviewer__switch--json-pre {
+    &:checked {
+        ~ .pillar-codeviewer__frame {
+            .pillar-codeviewer__nav {
+                .pillar-codeviewer__button--json-pre {
+                    background-color: lighten($color-outer-space, 0.2);
+                    opacity: 1;
+                }
+            }
+
+            .pillar-codeviewer__code--json-pre {
+                display: block;
+            }
+        }
+    }
+}
+
+.pillar-codeviewer__switch--json-post {
+    &:checked {
+        ~ .pillar-codeviewer__frame {
+            .pillar-codeviewer__nav {
+                .pillar-codeviewer__button--json-post {
+                    background-color: lighten($color-outer-space, 0.2);
+                    opacity: 1;
+                }
+            }
+
+            .pillar-codeviewer__code--json-post {
+                display: block;
+            }
+        }
+    }
+}
+
+.pillar-codeviewer__nav {
+    overflow: hidden;
+    margin: 1px 0 0;
+
+    font-family: sans-serif;
+
+    background-color: $color-outer-space;
+}
+
+.pillar-codeviewer__label {
+    float: left;
+    padding: (($font-size-default * 0.6) * 2);
+
+    font-size: ($font-size-default * 0.6);
+
+    color: $color-white;
+
+    opacity: 0.2;
+}
+
+.pillar-codeviewer__button {
+    float: left;
+    padding: $font-size-default;
+
+    text-decoration: none;
+
+    color: $color-white;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.pillar-codeviewer__button--minimal {
+    float: right;
+}
+
+.pillar-codeviewer__frame {
+    display: block;
+
+    .pillar-codeviewer__nav {
+        background-color: darken($color-outer-space, 2%);
+    }
+}
+
+.pillar-codeviewer__code {
+    display: none;
+    padding: $font-size-default;
+
+    font-family: monospace;
+    line-height: ($font-size-default * 1.4);
+
+    background-color: $color-outer-space;
+}
+
+.pillar-codeviewer__highlight {
+    background-color: inherit !important;
+}

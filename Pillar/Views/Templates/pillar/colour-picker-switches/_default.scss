@@ -1,0 +1,115 @@
+.pillar-colour-picker-switches__switch {
+    display: none;
+}
+
+.pillar-colour-picker-switches__switch--white {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-colour-picker__swatch--current {
+                .pillar-colour-picker__colour {
+                    background-color: $color-white;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                background-color: $color-white;
+            }
+        }
+    }
+}
+
+.pillar-colour-picker-switches__switch--transparent {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-colour-picker__swatch--current {
+                .pillar-colour-picker__colour {
+                    background-image: url($bg-transparent);
+                    background-position: 50% 50%;
+                    background-repeat: repeat;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                background-image: url($bg-transparent);
+                background-position: 50% 50%;
+                background-repeat: repeat;
+            }
+        }
+    }
+}
+
+.pillar-colour-picker-switches__switch--grey {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-colour-picker__swatch--current {
+                .pillar-colour-picker__colour {
+                    background-color: $color-outer-space;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                background-color: $color-outer-space;
+            }
+        }
+    }
+}
+
+.pillar-colour-picker-switches__switch--red {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-colour-picker__swatch--current {
+                .pillar-colour-picker__colour {
+                    background-color: $color-burnt-sienna;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                background-color: $color-burnt-sienna;
+            }
+        }
+    }
+}
+
+.pillar-colour-picker-switches__switch--blue {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-colour-picker__swatch--current {
+                .pillar-colour-picker__colour {
+                    background-color: $color-royal-blue;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                background-color: $color-royal-blue;
+            }
+        }
+    }
+}
+
+.pillar-colour-picker-switches__switch--black {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-colour-picker__swatch--current {
+                .pillar-colour-picker__colour {
+                    background-color: $color-black;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                background-color: $color-black;
+            }
+        }
+    }
+}

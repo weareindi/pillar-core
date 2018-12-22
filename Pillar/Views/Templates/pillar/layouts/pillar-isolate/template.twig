@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Isolate | Project Patterns | Pillar</title>
+
+        {# Library Specific #}
+        {% include 'common/html-head' ignore missing %}
+    </head>
+    <body>
+        {# Library Specific #}
+        {% include 'common/body-head' ignore missing %}
+
+        {% if pattern is defined and pattern is not empty %}
+            {% include pattern.template with pattern.data only %}
+        {% endif %}
+
+        {# Library Specific #}
+        {% include 'common/body-footer' ignore missing %}
+    </body>
+</html>

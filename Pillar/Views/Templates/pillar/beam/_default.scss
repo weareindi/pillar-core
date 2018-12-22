@@ -1,0 +1,17 @@
+.pillar-beam {
+    position: fixed;
+    z-index: 99997;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: darken($color-outer-space, 8%);
+}
+
+.pillar-beam__column--left {
+    float: left;
+}
+
+.pillar-beam__column--right {
+    float: right;
+}
