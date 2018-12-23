@@ -1,10 +1,10 @@
 <?php
 
-namespace PillarCore\Controllers;
+namespace Pillar\Controllers;
 
-use PillarCore\Services\PageService;
-use PillarCore\App\App;
-use PillarCore\Twig\TwigService as Twig;
+use Pillar\Services\PageService;
+use Pillar\App\App;
+use Pillar\Twig\TwigService as Twig;
 
 /**
  * Patterns Controller

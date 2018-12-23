@@ -1,6 +1,6 @@
 <?php
 
-namespace PillarCore\App;
+namespace Pillar\App;
 
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -24,12 +24,12 @@ class Routes {
      */
     public static function register() {
         $routes = new RouteCollection();
-        $routes->add('isolate', new Route('/patterns/{pattern}/isolate', ['_controller' => 'PillarCore\Controllers\PatternsController::isolate'], ['pattern' => '.+']));
-        $routes->add('pattern', new Route('/patterns/{pattern}', ['_controller' => 'PillarCore\Controllers\PatternsController::list'], ['pattern' => '.+']));
-        $routes->add('patterns', new Route('/patterns', ['_controller' => 'PillarCore\Controllers\PatternsController::list']));
-        $routes->add('index', new Route('/', ['_controller' => 'PillarCore\Controllers\PatternsController::list']));
-        $routes->add('sitemap', new Route('/sitemap', ['_controller' => 'PillarCore\Controllers\SitemapController::list']));
-        $routes->add('pages', new Route('/pages/{pattern}', ['_controller' => 'PillarCore\Controllers\PagesController::show'], ['pattern' => '.+']));
+        $routes->add('isolate', new Route('/patterns/{pattern}/isolate', ['_controller' => 'Pillar\Controllers\PatternsController::isolate'], ['pattern' => '.+']));
+        $routes->add('pattern', new Route('/patterns/{pattern}', ['_controller' => 'Pillar\Controllers\PatternsController::list'], ['pattern' => '.+']));
+        $routes->add('patterns', new Route('/patterns', ['_controller' => 'Pillar\Controllers\PatternsController::list']));
+        $routes->add('index', new Route('/', ['_controller' => 'Pillar\Controllers\PatternsController::list']));
+        $routes->add('sitemap', new Route('/sitemap', ['_controller' => 'Pillar\Controllers\SitemapController::list']));
+        $routes->add('pages', new Route('/pages/{pattern}', ['_controller' => 'Pillar\Controllers\PagesController::show'], ['pattern' => '.+']));
 
         self::$routes = $routes;
     }

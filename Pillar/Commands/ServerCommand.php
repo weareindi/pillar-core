@@ -1,6 +1,6 @@
 <?php
 
-namespace PillarCore\Commands;
+namespace Pillar\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

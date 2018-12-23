@@ -1,11 +1,11 @@
 <?php
 
-namespace PillarCore\Controllers;
+namespace Pillar\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
-use PillarCore\Services\PatternService;
-use PillarCore\App\App;
-use PillarCore\Twig\TwigService as Twig;
+use Pillar\Services\PatternService;
+use Pillar\App\App;
+use Pillar\Twig\TwigService as Twig;
 
 /**
  * Patterns Controller

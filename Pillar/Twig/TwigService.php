@@ -1,14 +1,14 @@
 <?php
 
-namespace PillarCore\Twig;
+namespace Pillar\Twig;
 
 use Twig_Extension;
 use Twig_Environment;
 use Twig_Extension_Debug;
 use Twig_Loader_Chain;
 use Twig_Loader_Filesystem;
-use PillarCore\Twig\TwigCustomLoader;
-use PillarCore\Twig\Functions\TwigAssetsFunction;
+use Pillar\Twig\TwigCustomLoader;
+use Pillar\Twig\Functions\TwigAssetsFunction;
 
 /**
  * Twig Service

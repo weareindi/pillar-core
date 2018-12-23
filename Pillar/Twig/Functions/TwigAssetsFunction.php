@@ -1,10 +1,10 @@
 <?php
 
-namespace PillarCore\Twig\Functions;
+namespace Pillar\Twig\Functions;
 
 use Twig_Extension;
 use Twig_Function;
-use PillarCore\App\Assets;
+use Pillar\App\Assets;
 
 /**
  * This function gets assets as their required by the Pillar Core templates

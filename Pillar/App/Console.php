@@ -1,9 +1,9 @@
 <?php
 
-namespace PillarCore\App;
+namespace Pillar\App;
 
 use Symfony\Component\Console\Application;
-use PillarCore\Commands\ServerCommand;
+use Pillar\Commands\ServerCommand;
 
 /**
  * Pillar Core Console

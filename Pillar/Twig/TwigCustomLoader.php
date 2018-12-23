@@ -1,6 +1,6 @@
 <?php
 
-namespace PillarCore\Twig;
+namespace Pillar\Twig;
 
 use Twig_LoaderInterface;
 use Twig_ExistsLoaderInterface;

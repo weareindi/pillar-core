@@ -1,6 +1,6 @@
 <?php
 
-namespace PillarCore\Services;
+namespace Pillar\Services;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;

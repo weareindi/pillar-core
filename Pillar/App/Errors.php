@@ -1,6 +1,6 @@
 <?php
 
-namespace PillarCore\App;
+namespace Pillar\App;
 
 use Symfony\Component\Debug\Debug;
 

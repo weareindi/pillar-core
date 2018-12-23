@@ -1,13 +1,13 @@
 <?php
 
-namespace PillarCore\App;
+namespace Pillar\App;
 
 use Twig_Extension;
-use PillarCore\App\Errors;
-use PillarCore\App\Paths;
-use PillarCore\App\Assets;
-use PillarCore\App\Routes;
-use PillarCore\Twig\TwigService as Twig;
+use Pillar\App\Errors;
+use Pillar\App\Paths;
+use Pillar\App\Assets;
+use Pillar\App\Routes;
+use Pillar\Twig\TwigService as Twig;
 
 /**
  * Pillar Core
