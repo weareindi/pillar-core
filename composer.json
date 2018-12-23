@@ -22,11 +22,6 @@
         "twig/twig": "^2.5",
         "symfony/debug": "^4.2"
     },
-    "config": {
-        "platform": {
-            "php": "7.0"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Pillar\\": "Pillar"
