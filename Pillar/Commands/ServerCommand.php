@@ -24,7 +24,7 @@ class ServerCommand extends Command {
     protected function execute(InputInterface $input, OutputInterface $output) {
 		$host = $input->getOption('host');
 		$port = $input->getOption('port');
-		$output->writeln('Starting server on ' . $host . ':' . $port);
+		$output->writeln('<info>Starting server on ' . $host . ':' . $port . '</info>');
 		passthru('php -S ' . $host . ':' . $port);
     }
 
