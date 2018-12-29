@@ -247,6 +247,11 @@ class PatternService {
         $ordered_groups = [];
 
         foreach ($order as $order_name) {
+            // If group name doesn't exist in current list of groups, we can skip
+            if (!array_key_exists($order_name, $groups)) {
+                continue;
+            }
+
             $ordered_groups[$order_name] = $groups[$order_name];
             unset($groups[$order_name]);
         }
