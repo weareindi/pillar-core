@@ -34,7 +34,7 @@ class PatternService {
                 ) {
 
                 // Populate $patterns
-                self::$patterns[self::pathToPattern(dirname($file))] = self::populate(dirname($file));;
+                self::$patterns[self::pathToPattern(dirname($file))] = self::populate(dirname($file));
             }
         }
 
@@ -127,9 +127,8 @@ class PatternService {
 
         $pattern['url'] = self::pathToPattern($path);
         $pattern['group'] = self::base($path);
-        $pattern['template'] = self::template($path);
+        $pattern['template'] = 'patterns/' . self::template($path);
         $pattern['data'] = self::data($path);
-        $pattern['data_parent'] = self::dataParent($path);
 
         return $pattern;
     }
@@ -160,74 +159,22 @@ class PatternService {
     /**
      * Get and prepare the pattern data
      * @param  String $path An absolute path
-     * @return Array        An array of prepared pattern data
+     * @return Array        An array containing the relative data for the template and its parent data
      */
     public static function data(String $path) {
-        $data = [];
+        $data = DataService::get($path);
 
-        $file = is_file($path . '/data.json') ? $path . '/data.json' : NULL;
-        $json = isset($file) && !empty(file_get_contents($file)) ? self::validateJson(file_get_contents($file)) : '{}';
-        $data = json_decode($json, true);
-
-        if (!self::isAlternative($path)) {
-            return $data;
+        $data_parent = $data;
+        if (self::isAlternative($path)) {
+            $data_parent = DataService::get(self::parentDirname($path));
         }
 
-        $data_parent = self::dataParent($path);
         $data = array_merge($data_parent, $data);
 
-        return $data;
-    }
-
-    /**
-     * Get and prepare the pattern data
-     * @param  String $path An absolute path
-     * @return Array        An array of prepared pattern data
-     */
-    public static function dataParent(String $path) {
-        if (!self::isAlternative($path)) {
-            return self::data($path);
-        }
-
-        $parent_path = self::parentDirname($path);
-        $file = is_file($parent_path . '/data.json') ? $parent_path . '/data.json' : NULL;
-        $json = isset($file) && !empty(file_get_contents($file)) ? self::validateJson(file_get_contents($file)) : '{}';
-        $data = json_decode($json, true);
-
-        return $data;
-    }
-
-    /**
-     * Validate JSON string
-     * @param  String $json
-     * @return String $json
-     */
-    public static function validateJson(String $json) {
-        json_decode($json);
-
-        switch (json_last_error()) {
-            case JSON_ERROR_NONE:
-                return $json;
-            break;
-            case JSON_ERROR_DEPTH:
-                throw new Exception('JSON Error: Maximum stack depth exceeded');
-            break;
-            case JSON_ERROR_STATE_MISMATCH:
-                throw new Exception('JSON Error: Underflow or the modes mismatch');
-            break;
-            case JSON_ERROR_CTRL_CHAR:
-                throw new Exception('JSON Error: Unexpected control character found');
-            break;
-            case JSON_ERROR_SYNTAX:
-                throw new Exception('JSON Error: Syntax error, malformed JSON');
-            break;
-            case JSON_ERROR_UTF8:
-                throw new Exception('JSON Error: Malformed UTF-8 characters, possibly incorrectly encoded');
-            break;
-            default:
-                throw new Exception('JSON Error: Unknown error');
-            break;
-        }
+        return [
+            'relative' => $data,
+            'parent' => $data_parent
+        ];
     }
 
     /**

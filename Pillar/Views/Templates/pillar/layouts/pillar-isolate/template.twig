@@ -12,7 +12,7 @@
         {% include 'common/body-head' ignore missing %}
 
         {% if pattern is defined and pattern is not empty %}
-            {% include pattern.template with pattern.data only %}
+            {% include pattern.template with pattern.data.relative only %}
         {% endif %}
 
         {# Library Specific #}

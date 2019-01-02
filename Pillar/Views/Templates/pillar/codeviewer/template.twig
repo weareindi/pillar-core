@@ -1,5 +1,5 @@
 {% set render %}
-    {% include template with data only %}
+    {% include template with data.relative only %}
 {% endset %}
 
 <div class="pillar-codeviewer">
@@ -40,11 +40,11 @@
         </div>
 
         <div class="pillar-codeviewer__code pillar-codeviewer__code--json-pre">
-            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data_parent|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data.parent|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
         </div>
 
         <div class="pillar-codeviewer__code pillar-codeviewer__code--json-post">
-            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data.relative|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
         </div>
     </div>
     {% endif %}
