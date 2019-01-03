@@ -11,15 +11,13 @@ use Pillar\Services\DataService;
  * Pillar Core Page Service
  */
 class PageService {
-    protected static $pages;
-
     /**
-     * Get patterns
+     * Get pages
      * @param  String $path Absolute path to root directory of patterns
      * @return Array
      */
     public static function get(String $path = PAGES) {
-        self::$pages = [];
+        $pages = [];
 
         $di = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
         $ii = new RecursiveIteratorIterator($di, RecursiveIteratorIterator::SELF_FIRST);
@@ -30,18 +28,23 @@ class PageService {
                 // Is expected file type
                 in_array(pathinfo($file, PATHINFO_EXTENSION), ['twig', 'json'])
                     // Hasn't already been processed
-                    && !array_key_exists(dirname($file), self::$pages)
+                    && !array_key_exists(dirname($file), $pages)
                 ) {
 
-                // Populate $patterns
-                self::$pages[self::pathToPages(dirname($file))] = self::populate(dirname($file));;
+                // Populate $pages
+                $pages[self::pathToPages(dirname($file))] = dirname($file);
             }
         }
 
-        // Now sort $patterns alphabetically by base
-        ksort(self::$pages);
+        // Now sort $pages alphabetically by base
+        ksort($pages);
 
-        return self::$pages;
+        // Populate pages now they're in correct order
+        foreach ($pages as $page_path => $page_file) {
+            $pages[$page_path] = self::populate($page_file);
+        }
+
+        return $pages;
     }
 
     /**

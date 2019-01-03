@@ -9,15 +9,13 @@ use RecursiveIteratorIterator;
  * Pillar Core Patterns Service
  */
 class PatternService {
-    protected static $patterns;
-
     /**
      * Get patterns
      * @param  String $path Absolute path to root directory of patterns
      * @return Array
      */
     public static function get(String $path = PATTERNS) {
-        self::$patterns = [];
+        $patterns = [];
 
         $di = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
         $ii = new RecursiveIteratorIterator($di, RecursiveIteratorIterator::SELF_FIRST);
@@ -28,20 +26,25 @@ class PatternService {
                 // Is expected file type
                 in_array(pathinfo($file, PATHINFO_EXTENSION), ['twig', 'json'])
                     // Hasn't already been processed
-                    && !array_key_exists(dirname($file), self::$patterns)
+                    && !array_key_exists(dirname($file), $patterns)
                         // Isn't hidden
                         && !self::isHidden(dirname($file))
                 ) {
 
                 // Populate $patterns
-                self::$patterns[self::pathToPattern(dirname($file))] = self::populate(dirname($file));
+                $patterns[self::pathToPattern(dirname($file))] = dirname($file);
             }
         }
 
         // Now sort $patterns alphabetically by base
-        ksort(self::$patterns);
+        ksort($patterns);
 
-        return self::$patterns;
+        // Populate patterns now they're in correct order
+        foreach ($patterns as $pattern_path => $pattern_file) {
+            $patterns[$pattern_path] = self::populate($pattern_file);
+        }
+
+        return $patterns;
     }
 
     /**

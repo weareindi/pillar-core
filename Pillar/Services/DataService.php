@@ -3,7 +3,6 @@
 namespace Pillar\Services;
 
 use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
 
 /**
  * Pillar Core Data Service
@@ -18,10 +17,9 @@ class DataService {
         $data = [];
 
         $di = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
-        $ii = new RecursiveIteratorIterator($di, RecursiveIteratorIterator::SELF_FIRST);
 
         // Process library pattern data
-        foreach($ii as $file) {
+        foreach($di as $file) {
             if (pathinfo($file, PATHINFO_EXTENSION) !== 'json') {
                 continue;
             }
