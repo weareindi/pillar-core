@@ -172,12 +172,37 @@ class PatternService {
             $data_parent = DataService::get(self::parentDirname($path));
         }
 
-        $data = array_merge($data_parent, $data);
+        $data = self::merge($data_parent, $data);
 
         return [
             'relative' => $data,
             'parent' => $data_parent
         ];
+    }
+
+    /**
+     * Recursive merge function totally stolen from https://medium.com/@kcmueller/php-merging-two-multi-dimensional-arrays-overwriting-existing-values-8648d2a7ea4f
+     * Thanks https://medium.com/@kcmueller | https://www.kcmueller.de/
+     *
+     * PHP's built-in `array_merge_recursive` function turned string values with the same key into an array of values. We don't want that.
+     *
+     * @param  Array  $array1
+     * @param  Array  $array2
+     * @return Array
+     */
+    public static function merge(Array $array1, Array $array2) {
+        $merged = $array1;
+
+        foreach ($array2 as $key => $value) {
+            if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+                $merged[$key] = self::merge($merged[$key], $value);
+                continue;
+            }
+
+            $merged[$key] = $value;
+        }
+
+        return $merged;
     }
 
     /**
