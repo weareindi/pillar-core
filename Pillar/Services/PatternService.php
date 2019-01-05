@@ -122,8 +122,8 @@ class PatternService {
     }
 
     /**
-     * [patternPopulate description]
-     * @return [type] [description]
+     * Populate pattern at path with all required fields
+     * @return Array A fully populated array of pattern information that we can use to populate our views
      */
     protected static function populate(String $path) {
         $pattern = [];
