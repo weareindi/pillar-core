@@ -4,6 +4,7 @@ namespace Pillar\App;
 
 use Symfony\Component\Console\Application;
 use Pillar\Commands\ExportCommand;
+use Pillar\Commands\GenerateTemplateCommand;
 use Pillar\Commands\ServerCommand;
 
 /**
@@ -22,6 +23,7 @@ class Console {
         // Define default commands and merge with user defined commands
         self::$commands = array_merge([
             new ExportCommand(),
+            new GenerateTemplateCommand(),
             new ServerCommand()
         ], $userCommands);
 
