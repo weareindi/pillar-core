@@ -39,7 +39,6 @@ class PatternsController {
             'pattern' => $pattern
         ];
 
-        Twig::register();
         Twig::render('pillar/layouts/pillar-isolate', $data);
     }
 
