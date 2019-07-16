@@ -115,7 +115,7 @@
     border-radius: ($font-size-default * 0.5);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 900px) {
     .pillar-colour-picker__switch {
         &:checked {
             ~ .pillar-colour-picker__cover {

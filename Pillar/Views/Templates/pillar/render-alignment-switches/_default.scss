@@ -1,0 +1,69 @@
+.pillar-render-alignment-switches__switch {
+    display: none;
+}
+
+.pillar-render-alignment-switches__switch--none {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-render-alignment__current {
+                .pillar-render-alignment__icon {
+                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAD5SURBVHgBrVTtEYIwDA2e/+kGuoE4gd0AmEA38JzAEZQJ6gacG+gIToBOAE5QU0gxpxA/c/cuTfKatmkuAP8Ua22JKBARwtBak94wX0LaENetS56oEA5ZIOZCvN47IDsFWa5CLOWJlgKxQoRCvN47JEMLxAnIotsVvjPuY2FMucIKcc0NqdhrByFe7w3IMKiO0NRDIUaIPSJmPicZNDU5kc8ioiAIVr7YFemQrc+kFfONO3jq6Xq/PM0bM4HoOlgJ8aQ765c38n10gH65wL0eXeI+qe3sTCC+6uwtT5QLRAWy5DyRYmNkx0cGxtxHTB9Gi/Fj5I2DPpMb3ZfVM3215e8AAAAASUVORK5CYII=');
+                }
+            }
+
+            .pillar-render-alignment__button--none {
+                .pillar-render-alignment__icon {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.pillar-render-alignment-switches__switch--left {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-render-alignment__current {
+                .pillar-render-alignment__icon {
+                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABiSURBVHgB7ZHbCcAgDEWvpQN0le4/RLuBHcENbiPor/ERPwQPhHwkXEgOMAOSnuP4mOVSIGGAEw4Yc6b+Sl0YI2AdtuVeFrGcpTwonxzk3zcaAlXL0SAqMLecAz9lT5vP4wcwEqVlDuZfFgAAAABJRU5ErkJggg==');
+                }
+            }
+
+            .pillar-render-alignment__button--left {
+                .pillar-render-alignment__icon {
+                    opacity: 1;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                text-align: left;
+            }
+        }
+    }
+}
+
+.pillar-render-alignment-switches__switch--right {
+    &:checked {
+        ~ .pillar-beam {
+            .pillar-render-alignment__current {
+                .pillar-render-alignment__icon {
+                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABfSURBVHgB7ZK7DcAgDETPUQbIKtl/iGQDGIENDiNR8zMUSDzJcmHrCj8DKyDpaMelLMmBxAREuTCZO/df64GNgH04lkfZxLK0Lqq3D+WzBHXy9gRWP2GJ5Z5Ab5yPEQGs9KVlNEP8wAAAAABJRU5ErkJggg==');
+                }
+            }
+
+            .pillar-render-alignment__button--right {
+                .pillar-render-alignment__icon {
+                    opacity: 1;
+                }
+            }
+        }
+
+        ~ .pillar-groups {
+            .pillar-pattern__render {
+                text-align: right;
+            }
+        }
+    }
+}

@@ -8,7 +8,9 @@
     background-color: darken($color-outer-space, 8%);
 }
 
-.pillar-beam__column--left {
+.pillar-beam__column--left,
+.pillar-beam__colour-picker,
+.pillar-beam__render-alignment {
     float: left;
 }
 
