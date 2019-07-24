@@ -15,13 +15,12 @@ class PagesController {
      * List required patterns in library
      */
     public static function show() {
-
         // Prepare data
         $page = PageService::get(self::getPath());
 
         $template = reset($page);
 
-        Twig::render($template['template'], $template['data']);
+        Twig::render($template['template'], $template['data']['relative']);
     }
 
     /**
