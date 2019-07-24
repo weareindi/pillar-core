@@ -5,6 +5,8 @@ namespace Pillar\Services;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
+use Pillar\Services\DataService;
+
 /**
  * Pillar Core Patterns Service
  */
@@ -80,7 +82,7 @@ class PatternService {
      * @param  String  $path An absolute path
      * @return Boolean       True if the $path is an alternative of it's parent
      */
-    protected static function isAlternative(String $path) {
+    public static function isAlternative(String $path) {
         return basename(dirname($path)) === 'alt' ? true : false;
     }
 

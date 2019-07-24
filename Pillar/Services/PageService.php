@@ -5,7 +5,7 @@ namespace Pillar\Services;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-use Pillar\Services\DataService;
+use Pillar\Services\PatternService;
 
 /**
  * Pillar Core Page Service
@@ -54,7 +54,7 @@ class PageService {
      */
     protected static function base(String $path) {
         // Explode path and return the first pattern "base" parameter
-        return explode('/', self::pathToPages($path))[0];;
+        return explode('/', self::pathToPages($path))[0];
     }
 
     /**
@@ -79,18 +79,9 @@ class PageService {
         $pattern['url'] = self::pathToPages($path);
         $pattern['group'] = self::base($path);
         $pattern['template'] = 'pages/' . self::template($path);
-        $pattern['data'] = DataService::get($path);
+        $pattern['data'] = PatternService::data($path);
 
         return $pattern;
-    }
-
-    /**
-     * Get the pattern parent directory path
-     * @param  String $path An absolute path
-     * @return String       An absolute path to a pattern parent
-     */
-    public static function parentDirname(String $path) {
-        return dirname($path, 2);
     }
 
     /**
@@ -100,6 +91,9 @@ class PageService {
      */
     public static function template(String $path) {
         $template = $path;
+        if (PatternService::isAlternative($path)) {
+            $template = PatternService::parentDirname($path);
+        }
 
         return self::pathToPages($template);
     }
