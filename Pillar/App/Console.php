@@ -5,6 +5,7 @@ namespace Pillar\App;
 use Symfony\Component\Console\Application;
 use Pillar\Commands\ExportCommand;
 use Pillar\Commands\GenerateTemplateCommand;
+use Pillar\Commands\HtmlCommand;
 use Pillar\Commands\ServerCommand;
 
 /**
@@ -24,6 +25,7 @@ class Console {
         self::$commands = array_merge([
             new ExportCommand(),
             new GenerateTemplateCommand(),
+            new HtmlCommand(),
             new ServerCommand()
         ], $userCommands);
 

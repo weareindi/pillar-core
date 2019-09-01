@@ -12,7 +12,7 @@ use Pillar\Twig\TwigService as Twig;
  */
 class PagesController {
     /**
-     * List required patterns in library
+     * Show requested page
      */
     public static function show() {
         // Prepare data
@@ -39,5 +39,17 @@ class PagesController {
         }
 
         return $path;
+    }
+
+    /**
+     * Compile and return requested page as html
+     */
+    public static function html($path) {
+        // Prepare data
+        $page = PageService::get($path);
+
+        $template = reset($page);
+
+        return Twig::compile($template['template'], $template['data']['relative']);
     }
 }
