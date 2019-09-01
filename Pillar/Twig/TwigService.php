@@ -48,7 +48,7 @@ class TwigService {
      * @return [type]           [description]
      */
     public static function render(String $template, Array $data = []) {
-        echo self::$twig->render($template, $data);
+        echo self::compile($template, $data);
     }
 
     /**
@@ -57,5 +57,15 @@ class TwigService {
      */
     public static function addExtension(Twig_Extension $extension) {
         self::$twig->addExtension($extension);
+    }
+
+    /**
+     * Compile TWIG template
+     * @param  String $template [description]
+     * @param  array  $data     [description]
+     * @return [type]           [description]
+     */
+    public static function compile(String $template, Array $data = []) {
+        return self::$twig->render($template, $data);
     }
 }
