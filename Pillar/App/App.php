@@ -42,6 +42,16 @@ class App {
     }
 
     /**
+     * A handy helper to push Twig global context data through to the Twig engine
+     * @param TwigGlobalContextData $data
+     */
+    public static function addTwigGlobalContextData(\TwigGlobalContextData $data) {
+        foreach ($data as $name => $value) {
+            Twig::addGlobal($name, $value);
+        }
+    }
+
+    /**
      * Run Pillar
      */
     public static function run() {

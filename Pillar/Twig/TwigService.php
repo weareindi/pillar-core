@@ -60,6 +60,15 @@ class TwigService {
     }
 
     /**
+     * Add to global context
+     * @param string $name
+     * @param string|array $value
+     */
+    public static function addGlobal($name, $value) {
+        self::$twig->addGlobal($name, $value);
+    }
+
+    /**
      * Compile TWIG template
      * @param  String $template [description]
      * @param  array  $data     [description]
