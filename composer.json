@@ -22,7 +22,7 @@
         "symfony/filesystem": "^5.2",
         "symfony/framework-bundle": "^5.2",
         "twig/twig": "^3.3",
-        "weareindi/pillar-gulp": "dev-master"
+        "weareindi/pillar-gulp": "^1.0.5"
     },
     "autoload": {
         "psr-4": {
