@@ -19,7 +19,7 @@ export class PatternBg {
     }
 
     getCheckedInput() {
-        Array.from(this.inputs).forEach((input) => {
+        Array.from(this.inputs, (input) => {
             if (input.checked) {
                 this.store(input.id);
             }
@@ -27,7 +27,7 @@ export class PatternBg {
     }
 
     setCheckedInput() {
-        Array.from(this.inputs).forEach((input) => {
+        Array.from(this.inputs, (input) => {
             if (input.id === this.restoredInput) {
                 input.checked = true;
             }
@@ -35,7 +35,7 @@ export class PatternBg {
     }
 
     binds() {
-        Array.from(this.inputs).forEach((input) => {
+        Array.from(this.inputs, (input) => {
             input.addEventListener('change', () => {
                 this.getCheckedInput();
             });

@@ -11,7 +11,7 @@ export class CheckboxRadio {
                 checkActive = true;
             }
 
-            Array.from(this.groupElements).forEach((element)  => {
+            Array.from(this.groupElements, (element) => {
                 element.removeAttribute('checked');
             });
 
