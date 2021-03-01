@@ -16,11 +16,13 @@
         "role": "Developer"
     }],
     "require": {
-        "symfony/console": "^4.2",
-        "symfony/dotenv": "^4.2",
-        "symfony/framework-bundle": "^4.2",
-        "twig/twig": "^2.5",
-        "symfony/debug": "^4.2"
+        "symfony/console": "^5.2",
+        "symfony/debug": "^2.3",
+        "symfony/dotenv": "^5.2",
+        "symfony/filesystem": "^5.2",
+        "symfony/framework-bundle": "^5.2",
+        "twig/twig": "^3.3",
+        "weareindi/pillar-gulp": "^1.0.5"
     },
     "autoload": {
         "psr-4": {
