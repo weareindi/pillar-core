@@ -7,7 +7,8 @@ module.exports = (gulp, options, plugins) => {
         const browserify = plugins.browserify({
             entries: process.env.JS_SRC + 'pillar-script.js',
             debug: false,
-            transform: [plugins.babelify]
+            transform: [plugins.babelify],
+            global: true
         });
 
         return browserify.bundle()

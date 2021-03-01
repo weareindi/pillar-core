@@ -6,28 +6,28 @@ import { PatternBg } from './directives/patternbg.js';
 // Run
 const highlightsTwigSurfaces = document.querySelectorAll('.pillar-codeviewer__highlight--twig code');
 if (highlightsTwigSurfaces.length > 0) {
-    Array.from(highlightsTwigSurfaces).forEach((surface) => {
+    Array.from(highlightsTwigSurfaces, (surface) => {
         new Highlights(surface, 'twig');
     });
 }
 
 const highlightsHtmlSurfaces = document.querySelectorAll('.pillar-codeviewer__highlight--html code');
 if (highlightsHtmlSurfaces.length > 0) {
-    Array.from(highlightsHtmlSurfaces).forEach((surface) => {
+    Array.from(highlightsHtmlSurfaces, (surface) => {
         new Highlights(surface, 'markup');
     });
 }
 
 const highlightsJsonSurfaces = document.querySelectorAll('.pillar-codeviewer__highlight--json code');
 if (highlightsJsonSurfaces.length > 0) {
-    Array.from(highlightsJsonSurfaces).forEach((surface) => {
+    Array.from(highlightsJsonSurfaces, (surface) => {
         new Highlights(surface, 'json');
     });
 }
 
 const checkboxradioSurfaces = document.querySelectorAll('.checkboxradio');
 if (checkboxradioSurfaces.length > 0) {
-    Array.from(checkboxradioSurfaces).forEach((surface) => {
+    Array.from(checkboxradioSurfaces, (surface) => {
         new CheckboxRadio(surface);
     });
 }
