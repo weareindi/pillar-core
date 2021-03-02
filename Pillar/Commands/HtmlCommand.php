@@ -37,6 +37,9 @@ class HtmlCommand extends Command {
         $output->writeln('DEST: ' . $export_html_dest);
         self::export(PAGES, $export_html_dest, true, $output);
         $output->writeln('<info>HTML EXPORT COMPLETE</info>');
+
+        // we're done now
+        return Command::SUCCESS;
     }
 
     /**

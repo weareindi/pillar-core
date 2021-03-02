@@ -80,5 +80,8 @@ class GenerateTemplateCommand extends Command {
         }
 
         $output->writeln('<info>Template generated</info>');
+
+        // we're done now
+        return Command::SUCCESS;
     }
 }
