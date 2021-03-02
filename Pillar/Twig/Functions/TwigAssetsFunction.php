@@ -2,17 +2,17 @@
 
 namespace Pillar\Twig\Functions;
 
-use Twig_Extension;
-use Twig_Function;
+use Twig\Extension\AbstractExtension as TwigAbstractExtension;
+use Twig\TwigFunction;
 use Pillar\App\Assets;
 
 /**
  * This function gets assets as their required by the Pillar Core templates
  */
-class TwigAssetsFunction extends Twig_Extension {
+class TwigAssetsFunction extends TwigAbstractExtension {
     public function getFunctions() {
         return array(
-            new Twig_Function('asset', array($this, 'getAsset')),
+            new TwigFunction('asset', array($this, 'getAsset')),
         );
     }
 

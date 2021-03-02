@@ -2,11 +2,9 @@
 
 namespace Pillar\Twig;
 
-use Twig_Extension;
-use Twig_Environment;
-use Twig_Extension_Debug;
-use Twig_Loader_Chain;
-use Twig_Loader_Filesystem;
+use Twig;
+use Twig\Extension\DebugExtension as TwigDebugExtension;
+use Twig\Extension\ExtensionInterface as TwigExtensionInterface;
 use Pillar\Twig\TwigCustomLoader;
 use Pillar\Twig\Functions\TwigAssetsFunction;
 
@@ -28,16 +26,16 @@ class TwigService {
             CORE . '/Pillar/Views/Templates'
         ];
 
-        $loader = new Twig_Loader_Chain([
-            new Twig_Loader_Filesystem($paths),
+        $loader = new Twig\Loader\ChainLoader([
+            new Twig\Loader\FilesystemLoader($paths),
             new TwigCustomLoader($paths)
         ]);
 
-        self::$twig = new Twig_Environment($loader, [
+        self::$twig = new Twig\Environment($loader, [
             'debug' => true
         ]);
 
-        self::addExtension(new Twig_Extension_Debug());
+        self::addExtension(new TwigDebugExtension());
         self::addExtension(new TwigAssetsFunction());
     }
 
@@ -55,7 +53,7 @@ class TwigService {
      * Add TWIG extensions
      * @param Twig_Extension $extension [description]
      */
-    public static function addExtension(Twig_Extension $extension) {
+    public static function addExtension(TwigExtensionInterface $extension) {
         self::$twig->addExtension($extension);
     }
 

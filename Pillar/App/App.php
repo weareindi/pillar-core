@@ -2,7 +2,7 @@
 
 namespace Pillar\App;
 
-use Twig_Extension;
+use Twig\Extension\ExtensionInterface as TwigExtensionInterface;
 use Pillar\App\Errors;
 use Pillar\App\Paths;
 use Pillar\App\Assets;
@@ -37,7 +37,7 @@ class App {
      * A handy helper to push Twig extentions through to the Twig engine
      * @param Twig_Extension $extension A twig extension
      */
-    public static function addTwigExtension(Twig_Extension $extension) {
+    public static function addTwigExtension(TwigExtensionInterface $extension) {
         Twig::addExtension($extension);
     }
 
