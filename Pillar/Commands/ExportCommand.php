@@ -68,6 +68,9 @@ class ExportCommand extends Command {
             self::export($export_assets_src, $export_assets_dest, false, $output);
             $output->writeln('<info>ASSETS DIRECTORY COPY COMPLETE</info>');
         }
+
+        // we're done now
+        return Command::SUCCESS;
     }
 
     /**

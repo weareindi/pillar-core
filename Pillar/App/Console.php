@@ -7,6 +7,7 @@ use Pillar\Commands\ExportCommand;
 use Pillar\Commands\GenerateTemplateCommand;
 use Pillar\Commands\HtmlCommand;
 use Pillar\Commands\ServerCommand;
+use Pillar\Commands\GulpCommand;
 
 /**
  * Pillar Core Console
@@ -26,7 +27,8 @@ class Console {
             new ExportCommand(),
             new GenerateTemplateCommand(),
             new HtmlCommand(),
-            new ServerCommand()
+            new ServerCommand(),
+            new GulpCommand()
         ], $userCommands);
 
         self::registerConsole();

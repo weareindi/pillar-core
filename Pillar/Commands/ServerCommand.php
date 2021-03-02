@@ -26,6 +26,9 @@ class ServerCommand extends Command {
 		$port = $input->getOption('port');
 		$output->writeln('<info>Starting server on ' . $host . ':' . $port . '</info>');
 		exec('php -S ' . $host . ':' . $port);
+
+        // we're done now
+        return Command::SUCCESS;
     }
 
     protected function getHost() {
