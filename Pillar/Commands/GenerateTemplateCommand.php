@@ -31,8 +31,7 @@ class GenerateTemplateCommand extends Command {
 
         // Get Type
         if ($input->getOption('page') && $input->getOption('pattern')) {
-            $io->error('Too many library types defined');
-            die();
+            $type = $io->choice('What library type does this new pattern belong to?', ['pages', 'patterns'], 'patterns');
         }
 
         if (!$input->getOption('page') && !$input->getOption('pattern')) {
