@@ -15,8 +15,11 @@ class GenerateTemplateCommand extends Command {
 
     protected static $name = 'generate';
 
+    protected static $shortnames = ['g', 'gen', 'make'];
+
     protected function configure() {
         $this->setName(self::$name);
+        $this->setAliases(self::$shortnames);
 		$this->setDescription('Generate a pattern');
         $this->addOption('page', null, InputOption::VALUE_NONE, 'Include this option for page template type');
         $this->addOption('pattern', null, InputOption::VALUE_NONE, 'Include this option for pattern template type');
