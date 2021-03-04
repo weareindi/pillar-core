@@ -71,19 +71,88 @@ class GenerateTemplateCommand extends Command {
             'data.json'
         ];
 
+        //
         $defined_files = getenv('GENERATE_FILES');
         if (!empty($defined_files)) {
             $files = explode('|', $defined_files);
         }
 
+        // get destination structure
+        // used for getting pattern type and name
+        $destination_structure = explode('/', substr($destination, strlen(PATTERNS . '/')));
+
         // Create files
         foreach ($files as $file) {
-            touch($destination . '/' . $file);
+            // populate full filename
+            $filename = $destination . '/' . $file;
+
+            // create template
+            if ($this->createTemplate($filename)) {
+
+                // populate template
+                $this->populateTemplate(
+                    $filename,
+                    $file,
+                    $type,
+                    $destination_structure[0],
+                    $destination_structure[1]
+                );
+            };
         }
 
         $output->writeln('<info>Template generated</info>');
 
         // we're done now
         return Command::SUCCESS;
+    }
+
+    /**
+     * Create the main template file
+     * @param  string $filename
+     * @return [type]           [description]
+     */
+    protected function createTemplate(string $filename) {
+        return touch($filename);
+    }
+
+    /**
+     * Populate Template
+     * Look for and use user-defined boiler plates in the Pillar/App/TemplateBoilerplates/ directory
+     * @param  string $filename
+     * @param  string $file
+     * @param  string $type
+     * @param  string $pattern_parent
+     * @param  string $pattern_name
+     * @return
+     */
+    protected function populateTemplate(string $filename, string $file, string $type, string $pattern_parent, string $pattern_name) {
+        // skip to next iteration if page pattern type
+        if ($type === 'pages') {
+            return false;
+        }
+
+        // prepare boilerplate path
+        $boilerlate_path = ROOT . '/App/TemplateBoilerplates/' . $file;
+
+        // do we have a boilerplate to copy in?
+        if (!file_exists($boilerlate_path)) {
+            return false;
+        }
+
+        // pattern type
+        $pattern_type = substr($pattern_parent, 0, 1);
+
+        // get boilerplate_contents
+        $boilerplate_contents = file_get_contents($boilerlate_path);
+
+        // replace variables
+        $boilerplate_contents = str_replace(
+            ['$1', '$2'],
+            [$pattern_type, $pattern_name],
+            $boilerplate_contents
+        );
+
+        // save updated contents to file
+        return file_put_contents($filename, $boilerplate_contents);
     }
 }
