@@ -28,8 +28,8 @@ class Routes {
         $routes->add('pattern', new Route('/patterns/{pattern}', ['_controller' => 'Pillar\Controllers\PatternsController::list'], ['pattern' => '.+']));
         $routes->add('patterns', new Route('/patterns', ['_controller' => 'Pillar\Controllers\PatternsController::list']));
         $routes->add('index', new Route('/', ['_controller' => 'Pillar\Controllers\PatternsController::list']));
-        $routes->add('sitemap', new Route('/sitemap', ['_controller' => 'Pillar\Controllers\SitemapController::list']));
-        $routes->add('pages', new Route('/pages/{pattern}', ['_controller' => 'Pillar\Controllers\PagesController::show'], ['pattern' => '.+']));
+        $routes->add('pages', new Route('/pages', ['_controller' => 'Pillar\Controllers\PagesController::list']));
+        $routes->add('page', new Route('/pages/{pattern}', ['_controller' => 'Pillar\Controllers\PageController::show'], ['pattern' => '.+']));
 
         self::$routes = $routes;
     }
