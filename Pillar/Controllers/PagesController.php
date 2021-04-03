@@ -15,6 +15,6 @@ class PagesController {
             'pages' => PageService::get()
         ];
 
-        Twig::render('pillar/layouts/pillar-sitemap', $data);
+        Twig::render('pillar/layouts/pillar-pages', $data);
     }
 }

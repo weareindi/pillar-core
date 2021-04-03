@@ -1,22 +1,22 @@
-.pillar-sitemap {
+.pillar-pages-list {
     padding: ($font-size-default * 4) $font-size-default;
 }
 
-.pillar-sitemap__list {}
+.pillar-pages-list__list {}
 
-.pillar-sitemap__items {
+.pillar-pages-list__items {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.pillar-sitemap__item {
-    + .pillar-sitemap__item {
+.pillar-pages-list__item {
+    + .pillar-pages-list__item {
         margin: 10px 0 0;
     }
 }
 
-.pillar-sitemap__link {
+.pillar-pages-list__link {
     padding: 0 0 0 28px;
 
     font-family: sans-serif;

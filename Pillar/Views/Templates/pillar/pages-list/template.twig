@@ -1,0 +1,15 @@
+<div class="pillar-pages-list">
+    {% include 'pillar/header' with {
+        'heading': 'Pages'
+    } only %}
+
+    <div class="pillar-pages-list__list">
+        {% if pages is defined and pages is not empty %}
+            <ol class="pillar-pages-list__items">
+                {% for page in pages %}
+                <li class="pillar-pages-list__item"><a href="/pages/{{ page.url }}" class="pillar-pages-list__link">{{ page.url }}</a></li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </div>
+</div>

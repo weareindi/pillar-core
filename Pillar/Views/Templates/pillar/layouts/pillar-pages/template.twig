@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Project Sitemap | Pillar</title>
+        <title>Project Pages | Pillar</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {# Pillar Specific #}
@@ -15,7 +15,7 @@
         {% include 'pillar/beam' %}
 
         {% if pages is defined and pages is not empty %}
-            {% include 'pillar/sitemap' with {
+            {% include 'pillar/pages-list' with {
                 'pages': pages
             } %}
         {% endif %}
