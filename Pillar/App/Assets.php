@@ -2,7 +2,7 @@
 
 namespace Pillar\App;
 
-use Twig_Error;
+use Twig\Error\Error as TwigError;
 
 /**
  * Pillar Core Assets
@@ -29,7 +29,7 @@ class Assets {
         $path = CORE . '/Pillar/Views/Assets/css/pillar-style.css';
 
         if (!file_exists($path)) {
-            throw new Twig_Error('Asset: Required CSS file does not exist');
+            throw new TwigError('Asset: Required CSS file does not exist');
         }
 
         return file_get_contents($path);
@@ -43,7 +43,7 @@ class Assets {
         $path = CORE . '/Pillar/Views/Assets/js/pillar-script.js';
 
         if (!file_exists($path)) {
-            throw new Twig_Error('Asset: Required JS file does not exist');
+            throw new TwigError('Asset: Required JS file does not exist');
         }
 
         return file_get_contents($path);
@@ -60,7 +60,7 @@ class Assets {
         }
 
         if (!isset(self::$assets[$asset])) {
-            throw new Twig_Error('Required asset has not been defined');
+            throw new TwigError('Required asset has not been defined');
         }
 
         return self::$assets[$asset];
