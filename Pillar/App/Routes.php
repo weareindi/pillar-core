@@ -30,6 +30,7 @@ class Routes {
         $routes->add('index', new Route('/', ['_controller' => 'Pillar\Controllers\PatternsController::list']));
         $routes->add('pages', new Route('/pages', ['_controller' => 'Pillar\Controllers\PagesController::list']));
         $routes->add('page', new Route('/pages/{pattern}', ['_controller' => 'Pillar\Controllers\PageController::show'], ['pattern' => '.+']));
+        $routes->add('image', new Route('/image/{pattern}', ['_controller' => 'Pillar\Controllers\ImageController::show'], ['pattern' => '.+']));
 
         self::$routes = $routes;
     }
