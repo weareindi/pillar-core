@@ -34,6 +34,6 @@
     },
     "dependencies": {
         "classlist-polyfill": "1.2.0",
-        "prismjs": "1.23.0"
+        "prismjs": "1.24.0"
     }
 }
