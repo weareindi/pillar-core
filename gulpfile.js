@@ -15,7 +15,7 @@ const plugins = {
     cssnano: require('cssnano'),
     log: require('fancy-log'),
     postcss: require('gulp-postcss'),
-    sass: require('gulp-sass'),
+    sass: require('gulp-sass')(require('sass')),
     uglify: require('gulp-uglify'),
     vinylBuffer: require('vinyl-buffer'),
     vinylSource: require('vinyl-source-stream')
