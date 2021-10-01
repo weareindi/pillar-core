@@ -8,7 +8,7 @@ class ImageController {
 
     private static $width = 100;
     private static $height = 100;
-    private static $bgcolor = 111;
+    private static $bgcolor = 'FF357A';
 
     public static function show() {
         // get image data
@@ -22,9 +22,11 @@ class ImageController {
             $hex = $hex[0].$hex[0].$hex[1].$hex[1].$hex[2].$hex[2];
         }
 
-        $r = hexdec($hex[0].$hex[0]);
-        $g = hexdec($hex[1].$hex[1]);
-        $b = hexdec($hex[2].$hex[2]);
+        $color = hexdec($hex);
+
+        $r = 0xFF & ($color >> 0x10);
+        $g = 0xFF & ($color >> 0x8);
+        $b = 0xFF & $color;
 
         // set header
         header('Content-Type: image/png');
