@@ -47,6 +47,6 @@ class PageController {
 
         $template = reset($page);
 
-        return Twig::compile($template['template'], $template['data']['relative']);
+        return (string) Twig::compile($template['template'], $template['data']['relative']);
     }
 }

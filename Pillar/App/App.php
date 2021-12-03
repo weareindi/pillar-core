@@ -2,6 +2,7 @@
 
 namespace Pillar\App;
 
+use TwigGlobalContextData;
 use Twig\Extension\ExtensionInterface as TwigExtensionInterface;
 use Pillar\App\Errors;
 use Pillar\App\Paths;
@@ -45,7 +46,7 @@ class App {
      * A handy helper to push Twig global context data through to the Twig engine
      * @param TwigGlobalContextData $data
      */
-    public static function addTwigGlobalContextData(\TwigGlobalContextData $data) {
+    public static function addTwigGlobalContextData(TwigGlobalContextData $data) {
         foreach ($data as $name => $value) {
             Twig::addGlobal($name, $value);
         }

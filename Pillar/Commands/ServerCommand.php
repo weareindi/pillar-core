@@ -16,22 +16,22 @@ class ServerCommand extends Command {
 
     protected function configure() {
         $this->setName(self::$name);
-		$this->setDescription('Serve Pillar via the built-in PHP webserver');
-		$this->addOption('host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on.', self::getHost());
-		$this->addOption('port', null, InputOption::VALUE_OPTIONAL, 'The port to serve the application on.', self::getPort());
+        $this->setDescription('Serve Pillar via the built-in PHP webserver');
+        $this->addOption('host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on.', self::getHost());
+        $this->addOption('port', null, InputOption::VALUE_OPTIONAL, 'The port to serve the application on.', self::getPort());
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-		$host = $input->getOption('host');
-		$port = $input->getOption('port');
-		$output->writeln('<info>Starting server on ' . $host . ':' . $port . '</info>');
-		exec('php -S ' . $host . ':' . $port);
+        $host = $input->getOption('host');
+        $port = $input->getOption('port');
+        $output->writeln('<info>Starting server on ' . $host . ':' . $port . '</info>');
+        exec('php -S ' . $host . ':' . $port);
 
         // we're done now
         return Command::SUCCESS;
     }
 
-    protected function getHost() {
+    protected static function getHost() {
         // Get default host
         $host = self::$host;
 
@@ -43,7 +43,7 @@ class ServerCommand extends Command {
         return $host;
     }
 
-    protected function getPort() {
+    protected static function getPort() {
         // Get default port
         $port = self::$port;
 

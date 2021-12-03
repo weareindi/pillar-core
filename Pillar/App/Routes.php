@@ -2,6 +2,7 @@
 
 namespace Pillar\App;
 
+use Exception;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;

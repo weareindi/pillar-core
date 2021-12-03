@@ -19,7 +19,7 @@ class ImageController {
 
         // convert 3 digit hex to 6 digit
         if (strlen($hex) === 3) {
-            $hex = $hex[0].$hex[0].$hex[1].$hex[1].$hex[2].$hex[2];
+            $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
         }
 
         $color = hexdec($hex);

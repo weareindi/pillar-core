@@ -23,7 +23,7 @@ class Assets {
 
     /**
      * Fetch Pillar CSS as a string
-     * @return String
+     * @return string
      */
     protected static function fetchCss() {
         $path = CORE . '/Pillar/Views/Assets/css/pillar-style.css';
@@ -37,7 +37,7 @@ class Assets {
 
     /**
      * Fetch Pillar Javscript as a string
-     * @return String
+     * @return string
      */
     protected static function fetchJs() {
         $path = CORE . '/Pillar/Views/Assets/js/pillar-script.js';
@@ -51,8 +51,8 @@ class Assets {
 
     /**
      * Get required asset
-     * @param  String/Bool $asset Name of required asset
-     * @return String/Array       Array of assets or string of specific asset
+     * @param  string/bool $asset Name of required asset
+     * @return string/array       array of assets or string of specific asset
      */
     public static function get($asset = false) {
         if (!$asset) {

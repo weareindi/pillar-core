@@ -7,7 +7,6 @@ use Pillar\Commands\ExportCommand;
 use Pillar\Commands\GenerateTemplateCommand;
 use Pillar\Commands\HtmlCommand;
 use Pillar\Commands\ServerCommand;
-use Pillar\Commands\GulpCommand;
 
 /**
  * Pillar Core Console
@@ -21,14 +20,13 @@ class Console {
     /**
      * @param array $userCommands An array of custom console commands
      */
-    function __construct(Array $userCommands = []) {
+    function __construct(array $userCommands = []) {
         // Define default commands and merge with user defined commands
         self::$commands = array_merge([
             new ExportCommand(),
             new GenerateTemplateCommand(),
             new HtmlCommand(),
-            new ServerCommand(),
-            new GulpCommand()
+            new ServerCommand()
         ], $userCommands);
 
         self::registerConsole();

@@ -41,11 +41,11 @@ class TwigService {
 
     /**
      * Render TWIG template
-     * @param  String $template [description]
+     * @param  string $template [description]
      * @param  array  $data     [description]
      * @return [type]           [description]
      */
-    public static function render(String $template, Array $data = []) {
+    public static function render(string $template, array $data = []) {
         echo self::compile($template, $data);
     }
 
@@ -68,11 +68,11 @@ class TwigService {
 
     /**
      * Compile TWIG template
-     * @param  String $template [description]
+     * @param  string $template [description]
      * @param  array  $data     [description]
      * @return [type]           [description]
      */
-    public static function compile(String $template, Array $data = []) {
+    public static function compile(string $template, array $data = []) {
         return self::$twig->render($template, $data);
     }
 }

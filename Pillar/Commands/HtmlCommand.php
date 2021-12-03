@@ -3,7 +3,7 @@
 namespace Pillar\Commands;
 
 use Pillar\App\Paths;
-use Pillar\Controllers\PagesController;
+use Pillar\Controllers\PageController;
 use Pillar\Twig\TwigService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -17,7 +17,7 @@ class HtmlCommand extends Command {
 
     protected function configure() {
         $this->setName(self::$name);
-		$this->setDescription('Export your pages to html');
+        $this->setDescription('Export your pages to html');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
@@ -32,7 +32,7 @@ class HtmlCommand extends Command {
         if (!$export_html_dest || empty($export_html_dest)) {
             return $output->writeln('<error>EXPORT_HTML_DEST is not defined in your .env</error>');
         }
-        $output->writeln('<info>EXPORTING HTML (From: '.PAGES.' to '.$export_html_dest.')</info>');
+        $output->writeln('<info>EXPORTING HTML (From: ' . PAGES . ' to ' . $export_html_dest . ')</info>');
         $output->writeln('SRC: ' . PAGES);
         $output->writeln('DEST: ' . $export_html_dest);
         self::export(PAGES, $export_html_dest, true, $output);
@@ -44,12 +44,12 @@ class HtmlCommand extends Command {
 
     /**
      * Export
-     * @param  String          $src        An absolute path
-     * @param  String          $dest       An absolute path
-     * @param  Bool            $is_library Are we exporting our library?
+     * @param  string          $src        An absolute path
+     * @param  string          $dest       An absolute path
+     * @param  bool            $is_library Are we exporting our library?
      * @param  OutputInterface $output
      */
-    protected function export(String $src, String $dest, Bool $is_library, OutputInterface $output) {
+    protected static function export(string $src, string $dest, bool $is_library, OutputInterface $output) {
         // Create destination directory if required
         if (!file_exists($dest)) {
             mkdir($dest, 0777, true);
@@ -64,7 +64,7 @@ class HtmlCommand extends Command {
         $di = new \RecursiveDirectoryIterator($src, \RecursiveDirectoryIterator::SKIP_DOTS);
         $ii = new \RecursiveIteratorIterator($di, \RecursiveIteratorIterator::SELF_FIRST);
 
-        foreach($ii as $file) {
+        foreach ($ii as $file) {
             // If it's not a file, we can skip to the next iteration
             if (!$file->isFile()) {
                 continue;
@@ -77,7 +77,7 @@ class HtmlCommand extends Command {
             $destinationFilename = substr($file->getPath(), strrpos($file->getPath(), '/') + 1) . '.html';
 
             // Get HTML as string
-            $html = PagesController::html(dirname($file->getPathname()));
+            $html = PageController::html(dirname($file->getPathname()));
 
             // Save file to destination
             if (!self::saveHtml($destinationDir, $destinationFilename, $html)) {
@@ -92,23 +92,22 @@ class HtmlCommand extends Command {
 
     /**
      * Delete Files
-     * @param String $directory The directory to be emptied
+     * @param string $directory The directory to be emptied
      */
-    protected static function deleteFiles(String $directory)
-    {
+    protected static function deleteFiles(string $directory) {
         $di = new \RecursiveDirectoryIterator($directory, \RecursiveDirectoryIterator::SKIP_DOTS);
         $ii = new \RecursiveIteratorIterator($di, \RecursiveIteratorIterator::CHILD_FIRST);
 
-        foreach($ii as $file) {
+        foreach ($ii as $file) {
             self::deleteItem($file);
         }
     }
 
     /**
      * Delete File
-     * @param String $file Absolute path to file or emapy directory
+     * @param object $file Absolute path to file or emapy directory
      */
-    protected static function deleteItem($file) {
+    protected static function deleteItem(object $file) {
         if ($file->isDir()) {
             if (@!rmdir($file->getRealPath())) {
                 self::deleteItem($file);
@@ -122,11 +121,11 @@ class HtmlCommand extends Command {
 
     /**
      * Save file to destination
-     * @param  String $destinationDir
-     * @param  String $destinationFilename
-     * @param  String $file
+     * @param  string $destinationDir
+     * @param  string $destinationFilename
+     * @param  string $file
      */
-    public static function saveHtml(String $destinationDir, String $destinationFilename, String $html) {
+    public static function saveHtml(string $destinationDir, string $destinationFilename, string $html) {
         if (!file_exists($destinationDir)) {
             mkdir($destinationDir, 0777, true);
         }

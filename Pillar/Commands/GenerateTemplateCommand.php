@@ -20,7 +20,7 @@ class GenerateTemplateCommand extends Command {
     protected function configure() {
         $this->setName(self::$name);
         $this->setAliases(self::$shortnames);
-		$this->setDescription('Generate a pattern');
+        $this->setDescription('Generate a pattern');
         $this->addOption('page', null, InputOption::VALUE_NONE, 'Include this option for page template type');
         $this->addOption('pattern', null, InputOption::VALUE_NONE, 'Include this option for pattern template type');
         $this->addArgument('name', InputArgument::REQUIRED, 'The name of the pattern. eg. "components/button"');
