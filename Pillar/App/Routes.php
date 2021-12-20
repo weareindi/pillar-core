@@ -43,24 +43,13 @@ class Routes {
         $request = Request::createFromGlobals();
         $requestContext = new RequestContext();
         $requestContext->fromRequest($request);
-
         $urlMatcher = new UrlMatcher(self::$routes, $requestContext);
-
         $controllerResolver = new ControllerResolver();
         $argumentResolver = new ArgumentResolver();
-
-        try {
-            $pathInfo = $requestContext->getPathInfo();
-            $request->attributes->add($urlMatcher->match($pathInfo));
-            $controller = $controllerResolver->getController($request);
-            $arguments = $argumentResolver->getArguments($request, $controller);
-            $response = call_user_func_array($controller, $arguments);
-        } catch (ResourceNotFoundException $exception) {
-            $response = new Response('Not Found', 404);
-            $response->send();
-        } catch (Exception $exception) {
-            $response = new Response('An error occurred', 500);
-            $response->send();
-        }
+        $pathInfo = $requestContext->getPathInfo();
+        $request->attributes->add($urlMatcher->match($pathInfo));
+        $controller = $controllerResolver->getController($request);
+        $arguments = $argumentResolver->getArguments($request, $controller);
+        call_user_func_array($controller, $arguments);
     }
 }
