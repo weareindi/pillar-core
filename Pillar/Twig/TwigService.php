@@ -5,6 +5,7 @@ namespace Pillar\Twig;
 use Twig;
 use Twig\Extension\DebugExtension as TwigDebugExtension;
 use Twig\Extension\ExtensionInterface as TwigExtensionInterface;
+use Twig\Extra\Intl\IntlExtension;
 use Pillar\Twig\TwigCustomLoader;
 use Pillar\Twig\Functions\TwigAssetsFunction;
 
@@ -37,6 +38,7 @@ class TwigService {
 
         self::addExtension(new TwigDebugExtension());
         self::addExtension(new TwigAssetsFunction());
+        self::addExtension(new IntlExtension());
     }
 
     /**
