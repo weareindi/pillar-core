@@ -1,7 +1,12 @@
 {
     "name": "weareindi/pillar-core",
     "description": "A TWIG powered pattern system",
-    "keywords": ["pattern library", "pattern system", "twig", "atomic"],
+    "keywords": [
+        "pattern library",
+        "pattern system",
+        "twig",
+        "atomic"
+    ],
     "license": "MIT",
     "support": {
         "issues": "https://github.com/weareindi/pillar/issues",
@@ -9,19 +14,22 @@
         "source": "https://github.com/weareindi/pillar/releases"
     },
     "type": "project",
-    "authors": [{
-        "name": "Laurence Archer",
-        "email": "laurence@weareindi.co.uk",
-        "homepage": "https://weareindi.co.uk/",
-        "role": "Developer"
-    }],
+    "authors": [
+        {
+            "name": "Laurence Archer",
+            "email": "laurence@weareindi.co.uk",
+            "homepage": "https://weareindi.co.uk/",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "symfony/console": "^5.2",
         "symfony/debug": "^2.3",
         "symfony/dotenv": "^5.2",
         "symfony/filesystem": "^5.2",
         "symfony/framework-bundle": "^5.2",
-        "twig/twig": "^3.3"
+        "twig/twig": "^3.3",
+        "twig/intl-extra": "^3.4"
     },
     "autoload": {
         "psr-4": {
