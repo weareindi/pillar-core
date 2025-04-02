@@ -26,7 +26,7 @@ class GenerateTemplateCommand extends Command {
         $this->addArgument('name', InputArgument::REQUIRED, 'The name of the pattern. eg. "components/button"');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output): int  {
         $io = new SymfonyStyle($input, $output);
 
         // Get Type

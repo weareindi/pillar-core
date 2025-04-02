@@ -20,7 +20,7 @@ class ExportCommand extends Command {
         $this->addOption('assets', null, InputOption::VALUE_NONE, 'Export assets directory');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $export_library = $input->getOption('library');
         $export_assets = $input->getOption('assets');
 

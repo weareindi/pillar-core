@@ -21,7 +21,7 @@ class ServerCommand extends Command {
         $this->addOption('port', null, InputOption::VALUE_OPTIONAL, 'The port to serve the application on.', self::getPort());
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output): int  {
         $host = $input->getOption('host');
         $port = $input->getOption('port');
         $output->writeln('<info>Starting server on ' . $host . ':' . $port . '</info>');
