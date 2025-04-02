@@ -2,7 +2,7 @@
 
 namespace Pillar\App;
 
-use Symfony\Component\Debug\Debug;
+use Symfony\Component\ErrorHandler\Debug;
 
 /**
  * Pillar Debug

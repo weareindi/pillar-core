@@ -60,9 +60,12 @@ class TwigCustomLoader implements Twig\Loader\LoaderInterface {
      * @param string|array $paths    A path or an array of paths where to look for templates
      * @param string|null  $rootPath The root path common to all relative paths (null for getcwd())
      */
-    public function __construct($paths = [], string $rootPath = null) {
+    public function __construct($paths = [], string $rootPath = '') {
         $this->rootPath = (null === $rootPath ? getcwd() : $rootPath) . \DIRECTORY_SEPARATOR;
-        if (false !== $realPath = realpath($rootPath)) {
+
+        $realPath = realpath($rootPath);
+
+        if (false !== $realPath) {
             $this->rootPath = $realPath . \DIRECTORY_SEPARATOR;
         }
 

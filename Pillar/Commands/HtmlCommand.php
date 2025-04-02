@@ -20,7 +20,7 @@ class HtmlCommand extends Command {
         $this->setDescription('Export your pages to html');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output): int  {
         // Define the default paths
         Paths::define();
 
