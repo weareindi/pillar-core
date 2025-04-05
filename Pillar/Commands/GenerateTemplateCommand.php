@@ -72,7 +72,7 @@ class GenerateTemplateCommand extends Command {
         ];
 
         //
-        $defined_files = getenv('GENERATE_FILES');
+        $defined_files = $_ENV['GENERATE_FILES'];
         if (!empty($defined_files)) {
             $files = explode('|', $defined_files);
         }

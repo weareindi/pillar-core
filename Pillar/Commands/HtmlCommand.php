@@ -28,7 +28,7 @@ class HtmlCommand extends Command {
         TwigService::register();
 
         // Check if html destination directory defined in .env
-        $export_html_dest = getenv('EXPORT_HTML_DEST');
+        $export_html_dest = $_ENV['EXPORT_HTML_DEST'];
         if (!$export_html_dest || empty($export_html_dest)) {
             return $output->writeln('<error>EXPORT_HTML_DEST is not defined in your .env</error>');
         }

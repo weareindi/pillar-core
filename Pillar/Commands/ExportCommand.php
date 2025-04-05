@@ -30,14 +30,14 @@ class ExportCommand extends Command {
         }
 
         // Check if library destination directory defined in .env
-        $export_library_dest = getenv('EXPORT_LIBRARY_DEST');
+        $export_library_dest = $_ENV['EXPORT_LIBRARY_DEST'];
         if ($export_library && (!$export_library_dest || empty($export_library_dest))) {
             return $output->writeln('<error>EXPORT_LIBRARY_DEST is not defined in your .env</error>');
         }
 
         // Check if assets source and destination directories defined in .env
-        $export_assets_src = getenv('EXPORT_ASSETS_SRC');
-        $export_assets_dest = getenv('EXPORT_ASSETS_DEST');
+        $export_assets_src = $_ENV['EXPORT_ASSETS_SRC'];
+        $export_assets_dest = $_ENV['EXPORT_ASSETS_DEST'];
         if ($export_assets) {
             if (!$export_assets_src || empty($export_assets_src)) {
                 return $output->writeln('<error>EXPORT_ASSETS_SRC is not defined in your .env</error>');

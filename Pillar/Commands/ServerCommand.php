@@ -36,8 +36,8 @@ class ServerCommand extends Command {
         $host = self::$host;
 
         // Check if .env host defined
-        if (getenv('HOST')) {
-            $host = getenv('HOST');
+        if ($_ENV['HOST']) {
+            $host = $_ENV['HOST'];
         }
 
         return $host;
@@ -48,8 +48,8 @@ class ServerCommand extends Command {
         $port = self::$port;
 
         // Check if .env port defined
-        if (getenv('PORT')) {
-            $port = getenv('PORT');
+        if ($_ENV['PORT']) {
+            $port = $_ENV['PORT'];
         }
 
         return $port;
