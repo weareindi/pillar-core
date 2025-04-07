@@ -10,7 +10,7 @@ use Pillar\App\Assets;
  * This function gets assets as their required by the Pillar Core templates
  */
 class TwigAssetsFunction extends TwigAbstractExtension {
-    public function getFunctions() {
+    public function getFunctions(): array {
         return array(
             new TwigFunction('asset', array($this, 'getAsset')),
         );
