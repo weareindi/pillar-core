@@ -92,7 +92,7 @@ class PatternService {
      * @return boolean
      */
     protected static function isHidden(string $path) {
-        $hidden = $_ENV['hidden'] ? explode('|', $_ENV['hidden']) : [];
+        $hidden = $_ENV['HIDDEN'] ? explode('|', $_ENV['HIDDEN']) : [];
 
         if (in_array(self::base($path), $hidden)) {
             return true;
@@ -213,7 +213,7 @@ class PatternService {
      * @return array An array of pattern data
      */
     public static function orderGroups(array $groups) {
-        $order = $_ENV['order'] ?: NULL;
+        $order = $_ENV['ORDER'] ?: NULL;
 
         if (!isset($order)) {
             return $groups;
