@@ -3,38 +3,25 @@
     "version": "1.9.3",
     "description": "A TWIG powered pattern system",
     "author": "Laurence Archer",
+    "scripts": {
+        "build": "gulp production",
+        "watch": "gulp watch"
+    },
     "devDependencies": {
-        "@babel/cli": "7.27.0",
-        "@babel/core": "7.26.10",
-        "@babel/plugin-transform-regenerator": "7.27.0",
-        "@babel/polyfill": "7.12.1",
-        "@babel/preset-env": "7.26.9",
-        "autoprefixer": "10.4.21",
-        "babelify": "10.0.0",
-        "browser-sync": "3.0.3",
-        "browserify": "17.0.1",
-        "core-js": "^3.41.0",
-        "cssnano": "7.0.6",
-        "dotenv": "16.4.7",
-        "eslint": "9.23.0",
+        "autoprefixer": "10.5.4",
+        "cssnano": "8.0.4",
+        "dotenv": "17.4.2",
+        "esbuild": "^0.28.1",
+        "eslint": "10.8.0",
         "eslint-config-google": "0.14.0",
-        "fancy-log": "2.0.0",
-        "gulp": "5.0.0",
-        "gulp-postcss": "10.0.0",
-        "gulp-sass": "6.0.1",
-        "gulp-uglify": "3.0.2",
-        "load-gulp-tasks": "0.1.0",
-        "postcss": "^8.5.3",
-        "sass": "^1.86.1",
-        "stylelint": "16.17.0",
-        "stylelint-config-standard": "37.0.0",
-        "stylelint-order": "6.0.4",
-        "undertaker-forward-reference": "2.0.0",
-        "vinyl-buffer": "1.0.1",
-        "vinyl-source-stream": "2.0.0"
+        "gulp": "5.0.1",
+        "postcss": "^8.5.26",
+        "sass": "^1.102.0",
+        "stylelint": "17.14.1",
+        "stylelint-config-standard": "40.0.0",
+        "stylelint-order": "8.1.1"
     },
     "dependencies": {
-        "classlist-polyfill": "1.2.0",
         "prismjs": "1.30.0"
     }
 }
