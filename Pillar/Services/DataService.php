@@ -2,19 +2,27 @@
 
 namespace Pillar\Services;
 
-use Exception;
+use JsonException;
 use RecursiveDirectoryIterator;
 
 /**
  * Pillar Core Data Service
  */
 class DataService {
+    /** @var array<string, array> */
+    private static array $cache = [];
+
     /**
      * Iterate through directory and merge all json files
      * @param  string $path An absolute path
      * @return array        An array of prepared pattern data
      */
     public static function get(string $path) {
+        $cacheKey = realpath($path) ?: $path;
+        if (array_key_exists($cacheKey, self::$cache)) {
+            return self::$cache[$cacheKey];
+        }
+
         $data = [];
 
         $di = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
@@ -25,46 +33,33 @@ class DataService {
                 continue;
             }
 
-            $json = !empty(file_get_contents($file)) ? self::validateJson(file_get_contents($file)) : '{}';
+            $json = file_get_contents($file->getPathname());
+            if ($json === false || trim($json) === '') {
+                continue;
+            }
 
-            $array = json_decode($json, true);
+            try {
+                $array = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            } catch (JsonException $exception) {
+                throw new JsonException(
+                    sprintf('JSON Error in "%s": %s', $file->getPathname(), $exception->getMessage()),
+                    $exception->getCode(),
+                    $exception
+                );
+            }
 
             $data = array_merge($data, $array);
         }
 
-        return $data;
+        return self::$cache[$cacheKey] = $data;
     }
 
     /**
-     * Validate JSON string
-     * @param  string $json
-     * @return string $json
+     * Validate JSON while retaining the original public API.
      */
-    public static function validateJson(string $json) {
-        json_decode($json);
+    public static function validateJson(string $json): string {
+        json_decode($json, flags: JSON_THROW_ON_ERROR);
 
-        switch (json_last_error()) {
-            case JSON_ERROR_NONE:
-                return $json;
-                break;
-            case JSON_ERROR_DEPTH:
-                throw new Exception('JSON Error: Maximum stack depth exceeded');
-                break;
-            case JSON_ERROR_STATE_MISMATCH:
-                throw new Exception('JSON Error: Underflow or the modes mismatch');
-                break;
-            case JSON_ERROR_CTRL_CHAR:
-                throw new Exception('JSON Error: Unexpected control character found');
-                break;
-            case JSON_ERROR_SYNTAX:
-                throw new Exception('JSON Error: Syntax error, malformed JSON');
-                break;
-            case JSON_ERROR_UTF8:
-                throw new Exception('JSON Error: Malformed UTF-8 characters, possibly incorrectly encoded');
-                break;
-            default:
-                throw new Exception('JSON Error: Unknown error');
-                break;
-        }
+        return $json;
     }
 }

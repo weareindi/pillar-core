@@ -25,6 +25,7 @@ class Routes {
      */
     public static function register() {
         $routes = new RouteCollection();
+        $routes->add('pattern-codeviewer', new Route('/patterns/codeviewer', ['_controller' => 'Pillar\Controllers\PatternsController::codeviewer']));
         $routes->add('isolate', new Route('/patterns/{pattern}/isolate', ['_controller' => 'Pillar\Controllers\PatternsController::isolate'], ['pattern' => '.+']));
         $routes->add('pattern', new Route('/patterns/{pattern}', ['_controller' => 'Pillar\Controllers\PatternsController::list'], ['pattern' => '.+']));
         $routes->add('patterns', new Route('/patterns', ['_controller' => 'Pillar\Controllers\PatternsController::list']));

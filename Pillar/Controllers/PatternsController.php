@@ -3,6 +3,7 @@
 namespace Pillar\Controllers;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Pillar\Services\PatternService;
 use Pillar\App\App;
 use Pillar\Twig\TwigService as Twig;
@@ -40,6 +41,39 @@ class PatternsController {
         ];
 
         Twig::render('pillar/layouts/pillar-isolate', $data);
+    }
+
+    /**
+     * Return expensive code-viewer content only when a viewer is opened.
+     */
+    public static function codeviewer(): void {
+        $pattern = (string) Request::createFromGlobals()->query->get('pattern', '');
+        $patternsRoot = realpath(PATTERNS);
+        $path = realpath(PATTERNS . '/' . $pattern);
+
+        if (
+            $patternsRoot === false
+            || $path === false
+            || !is_dir($path)
+            || !str_starts_with($path, $patternsRoot . DIRECTORY_SEPARATOR)
+        ) {
+            (new JsonResponse(['error' => 'Pattern not found'], JsonResponse::HTTP_NOT_FOUND))->send();
+            return;
+        }
+
+        $patterns = PatternService::get($path);
+        $item = reset($patterns);
+        if ($item === false || $item['url'] !== trim($pattern, '/')) {
+            (new JsonResponse(['error' => 'Pattern not found'], JsonResponse::HTTP_NOT_FOUND))->send();
+            return;
+        }
+
+        (new JsonResponse([
+            'twig-pre' => trim(Twig::source($item['template'])),
+            'twig-post' => trim((string) Twig::compile($item['template'], $item['data']['relative'])),
+            'json-pre' => json_encode($item['data']['parent'], JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR),
+            'json-post' => json_encode($item['data']['relative'], JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR)
+        ]))->setPrivate()->setMaxAge(0)->send();
     }
 
     /**
