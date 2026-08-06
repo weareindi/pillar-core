@@ -4,7 +4,10 @@ module.exports = (gulp, options, plugins) => {
 
     const compile = async () => {
         const result = plugins.sass.compile(source(), {
-            loadPaths: [process.cwd()],
+            loadPaths: [
+                plugins.path.join(process.cwd(), '_src/scss'),
+                process.cwd()
+            ],
             style: 'expanded'
         });
         const processed = await plugins.postcss([

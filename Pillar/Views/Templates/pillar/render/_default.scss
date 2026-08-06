@@ -1,3 +1,5 @@
+@use 'globals/variables' as *;
+
 .pillar-render {
     padding: $font-size-default;
 }

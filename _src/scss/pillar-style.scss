@@ -1,22 +1,21 @@
-@import "globals/variables";
-@import "globals/global";
+@use "globals/global";
 
 // Components
-@import "../../Pillar/Views/Templates/pillar/beam/_default";
-@import "../../Pillar/Views/Templates/pillar/breadcrumbs/_default";
-@import "../../Pillar/Views/Templates/pillar/button/_default";
-@import "../../Pillar/Views/Templates/pillar/codeviewer/_default";
-@import "../../Pillar/Views/Templates/pillar/colour-picker/_default";
-@import "../../Pillar/Views/Templates/pillar/colour-picker-switches/_default";
-@import "../../Pillar/Views/Templates/pillar/groups/_default";
-@import "../../Pillar/Views/Templates/pillar/header/_default";
-@import "../../Pillar/Views/Templates/pillar/pages/_default";
-@import "../../Pillar/Views/Templates/pillar/pages-list/_default";
-@import "../../Pillar/Views/Templates/pillar/pattern/_default";
-@import "../../Pillar/Views/Templates/pillar/patterns/_default";
-@import "../../Pillar/Views/Templates/pillar/render/_default";
-@import "../../Pillar/Views/Templates/pillar/render-alignment/_default";
-@import "../../Pillar/Views/Templates/pillar/render-alignment-switches/_default";
+@use "../../Pillar/Views/Templates/pillar/beam/default" as *;
+@use "../../Pillar/Views/Templates/pillar/breadcrumbs/default" as *;
+@use "../../Pillar/Views/Templates/pillar/button/default" as *;
+@use "../../Pillar/Views/Templates/pillar/codeviewer/default" as *;
+@use "../../Pillar/Views/Templates/pillar/colour-picker/default" as *;
+@use "../../Pillar/Views/Templates/pillar/colour-picker-switches/default" as *;
+@use "../../Pillar/Views/Templates/pillar/groups/default" as *;
+@use "../../Pillar/Views/Templates/pillar/header/default" as *;
+@use "../../Pillar/Views/Templates/pillar/pages/default" as *;
+@use "../../Pillar/Views/Templates/pillar/pages-list/default" as *;
+@use "../../Pillar/Views/Templates/pillar/pattern/default" as *;
+@use "../../Pillar/Views/Templates/pillar/patterns/default" as *;
+@use "../../Pillar/Views/Templates/pillar/render/default" as *;
+@use "../../Pillar/Views/Templates/pillar/render-alignment/default" as *;
+@use "../../Pillar/Views/Templates/pillar/render-alignment-switches/default" as *;
 
-// Highlight.js
-@import "node_modules/prismjs/themes/prism-twilight"
+// Prism
+@use "node_modules/prismjs/themes/prism-twilight.css";

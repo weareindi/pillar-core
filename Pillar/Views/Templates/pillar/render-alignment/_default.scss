@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'globals/variables' as *;
+
 .pillar-render-alignment {}
 
 .pillar-render-alignment__switch {
@@ -28,14 +31,14 @@
     width: 100%;
     height: 100%;
 
-    background-color: fade-out(darken($color-outer-space, 8%), 0.1);
+    background-color: color.adjust(color.adjust($color-outer-space, $lightness: -8%), $alpha: -0.1);
 }
 
 .pillar-render-alignment__open {
     position: relative;
     display: block;
 
-    background-color: darken($color-outer-space, 4%);
+    background-color: color.adjust($color-outer-space, $lightness: -4%);
 
     cursor: pointer;
 }
@@ -47,7 +50,7 @@
     left: 64px;
     display: none;
 
-    background-color: darken($color-outer-space, 4%);
+    background-color: color.adjust($color-outer-space, $lightness: -4%);
 }
 
 .pillar-render-alignment__current {

@@ -1,9 +1,12 @@
+@use 'sass:color';
+@use 'variables' as *;
+
 .pillar {
     width: 100%;
     margin: ($font-size-default * 4) 0 0;
     padding: 0;
 
-    background-color: darken($color-outer-space, 4%);
+    background-color: color.adjust($color-outer-space, $lightness: -4%);
 }
 
 .pillar-hide {
