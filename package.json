@@ -1,6 +1,6 @@
 {
     "name": "Pillar-Core",
-    "version": "1.9.3",
+    "version": "2.0.0",
     "description": "A TWIG powered pattern system",
     "author": "Laurence Archer",
     "scripts": {
