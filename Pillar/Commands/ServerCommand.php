@@ -14,7 +14,7 @@ class ServerCommand extends Command {
     protected static $host = 'localhost';
     protected static $port = '8080';
 
-    protected function configure() {
+    protected function configure(): void {
         $this->setName(self::$name);
         $this->setDescription('Serve Pillar via the built-in PHP webserver');
         $this->addOption('host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on.', self::getHost());
