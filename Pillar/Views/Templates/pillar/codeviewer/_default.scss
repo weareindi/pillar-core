@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'globals/variables' as *;
+
 .pillar-codeviewer {
     font-size: $font-size-default;
     letter-spacing: normal;
@@ -11,7 +14,7 @@
     &:checked {
         ~ .pillar-codeviewer__nav {
             .pillar-codeviewer__button--twig {
-                background-color: lighten($color-outer-space, 0.2);
+                background-color: color.adjust($color-outer-space, $lightness: 0.2%);
                 opacity: 1;
             }
         }
@@ -27,7 +30,7 @@
         ~ .pillar-codeviewer__frame {
             .pillar-codeviewer__nav {
                 .pillar-codeviewer__button--twig-pre {
-                    background-color: lighten($color-outer-space, 0.2);
+                    background-color: color.adjust($color-outer-space, $lightness: 0.2%);
                     opacity: 1;
                 }
             }
@@ -44,7 +47,7 @@
         ~ .pillar-codeviewer__frame {
             .pillar-codeviewer__nav {
                 .pillar-codeviewer__button--twig-post {
-                    background-color: lighten($color-outer-space, 0.2);
+                    background-color: color.adjust($color-outer-space, $lightness: 0.2%);
                     opacity: 1;
                 }
             }
@@ -60,7 +63,7 @@
     &:checked {
         ~ .pillar-codeviewer__nav {
             .pillar-codeviewer__button--json {
-                background-color: lighten($color-outer-space, 0.2);
+                background-color: color.adjust($color-outer-space, $lightness: 0.2%);
                 opacity: 1;
             }
         }
@@ -76,7 +79,7 @@
         ~ .pillar-codeviewer__frame {
             .pillar-codeviewer__nav {
                 .pillar-codeviewer__button--json-pre {
-                    background-color: lighten($color-outer-space, 0.2);
+                    background-color: color.adjust($color-outer-space, $lightness: 0.2%);
                     opacity: 1;
                 }
             }
@@ -93,7 +96,7 @@
         ~ .pillar-codeviewer__frame {
             .pillar-codeviewer__nav {
                 .pillar-codeviewer__button--json-post {
-                    background-color: lighten($color-outer-space, 0.2);
+                    background-color: color.adjust($color-outer-space, $lightness: 0.2%);
                     opacity: 1;
                 }
             }
@@ -150,7 +153,7 @@
     display: block;
 
     .pillar-codeviewer__nav {
-        background-color: darken($color-outer-space, 2%);
+        background-color: color.adjust($color-outer-space, $lightness: -2%);
     }
 }
 

@@ -33,6 +33,8 @@ class TwigService {
         ]);
 
         self::$twig = new Twig\Environment($loader, [
+            'auto_reload' => true,
+            'cache' => sys_get_temp_dir() . '/pillar/twig/' . hash('sha256', ROOT),
             'debug' => true
         ]);
 
@@ -76,5 +78,12 @@ class TwigService {
      */
     public static function compile(string $template, array $data = []) {
         return self::$twig->render($template, $data);
+    }
+
+    /**
+     * Get the uncompiled source for a template.
+     */
+    public static function source(string $template): string {
+        return self::$twig->getLoader()->getSourceContext($template)->getCode();
     }
 }

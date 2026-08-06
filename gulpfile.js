@@ -1,28 +1,23 @@
-require('events').EventEmitter.prototype._maxListeners = 100;
-require('dotenv').config(); // Loads default .env file variables into `process.env`
-require('dotenv').config({ // Loads gulp .env file variables into `process.env`
+require('dotenv').config({quiet: true});
+require('dotenv').config({
+    quiet: true,
     path: './.env.gulp'
 });
 
 const gulp = require('gulp');
-const forwardRef = require('undertaker-forward-reference');
 
 const plugins = {
     autoprefixer: require('autoprefixer'),
-    babelify: require('babelify'),
-    browserify: require('browserify'),
-    browsersync: require('browser-sync').create(),
     cssnano: require('cssnano'),
-    log: require('fancy-log'),
-    postcss: require('gulp-postcss'),
-    sass: require('gulp-sass')(require('sass')),
-    uglify: require('gulp-uglify'),
-    vinylBuffer: require('vinyl-buffer'),
-    vinylSource: require('vinyl-source-stream')
+    esbuild: require('esbuild'),
+    fs: require('node:fs/promises'),
+    path: require('node:path'),
+    postcss: require('postcss'),
+    sass: require('sass')
 };
 
-gulp.registry(forwardRef());
-
-require('load-gulp-tasks')(gulp, {
-    pattern: ['_gulp/**/*.gulp.js']
-}, plugins);
+require('./_gulp/scss.gulp.js')(gulp, {}, plugins);
+require('./_gulp/js.gulp.js')(gulp, {}, plugins);
+require('./_gulp/watch.gulp.js')(gulp, {}, plugins);
+require('./_gulp/production.gulp.js')(gulp, {}, plugins);
+require('./_gulp/default.gulp.js')(gulp, {}, plugins);

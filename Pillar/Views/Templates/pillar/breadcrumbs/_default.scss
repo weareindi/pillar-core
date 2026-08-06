@@ -1,9 +1,12 @@
+@use 'sass:color';
+@use 'globals/variables' as *;
+
 .pillar-breadcrumbs {
     font-family: sans-serif;
     font-size: $font-size-default;
     letter-spacing: normal;
 
-    color: transparentize($color-white, 0.8);
+    color: color.adjust($color-white, $alpha: -0.8);
 
     cursor: default;
 }

@@ -13,7 +13,7 @@ class ExportCommand extends Command {
 
     protected static $name = 'export';
 
-    protected function configure() {
+    protected function configure(): void {
         $this->setName(self::$name);
         $this->setDescription('Export your library for external use');
         $this->addOption('library', null, InputOption::VALUE_NONE, 'Export library directory to defined location. This only exports template files.');
@@ -32,7 +32,8 @@ class ExportCommand extends Command {
         // Check if library destination directory defined in .env
         $export_library_dest = $_ENV['EXPORT_LIBRARY_DEST'];
         if ($export_library && (!$export_library_dest || empty($export_library_dest))) {
-            return $output->writeln('<error>EXPORT_LIBRARY_DEST is not defined in your .env</error>');
+            $output->writeln('<error>EXPORT_LIBRARY_DEST is not defined in your .env</error>');
+            return Command::FAILURE;
         }
 
         // Check if assets source and destination directories defined in .env
@@ -40,11 +41,13 @@ class ExportCommand extends Command {
         $export_assets_dest = $_ENV['EXPORT_ASSETS_DEST'];
         if ($export_assets) {
             if (!$export_assets_src || empty($export_assets_src)) {
-                return $output->writeln('<error>EXPORT_ASSETS_SRC is not defined in your .env</error>');
+                $output->writeln('<error>EXPORT_ASSETS_SRC is not defined in your .env</error>');
+                return Command::FAILURE;
             }
 
             if (!$export_assets_dest || empty($export_assets_dest)) {
-                return $output->writeln('<error>EXPORT_ASSETS_DEST is not defined in your .env</error>');
+                $output->writeln('<error>EXPORT_ASSETS_DEST is not defined in your .env</error>');
+                return Command::FAILURE;
             }
         }
 

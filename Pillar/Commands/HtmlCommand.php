@@ -15,7 +15,7 @@ class HtmlCommand extends Command {
 
     protected static $name = 'html';
 
-    protected function configure() {
+    protected function configure(): void {
         $this->setName(self::$name);
         $this->setDescription('Export your pages to html');
     }
@@ -30,7 +30,8 @@ class HtmlCommand extends Command {
         // Check if html destination directory defined in .env
         $export_html_dest = $_ENV['EXPORT_HTML_DEST'];
         if (!$export_html_dest || empty($export_html_dest)) {
-            return $output->writeln('<error>EXPORT_HTML_DEST is not defined in your .env</error>');
+            $output->writeln('<error>EXPORT_HTML_DEST is not defined in your .env</error>');
+            return Command::FAILURE;
         }
         $output->writeln('<info>EXPORTING HTML (From: ' . PAGES . ' to ' . $export_html_dest . ')</info>');
         $output->writeln('SRC: ' . PAGES);

@@ -1,3 +1,5 @@
+@use 'globals/variables' as *;
+
 .pillar-group {
     padding: ($font-size-default * 4) $font-size-default;
 }

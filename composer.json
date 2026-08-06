@@ -23,13 +23,14 @@
         }
     ],
     "require": {
-        "symfony/console": "7.2.5",
-        "symfony/error-handler": "7.2.5",
-        "symfony/dotenv": "7.2.0",
-        "symfony/filesystem": "7.2.0",
-        "symfony/framework-bundle": "7.2.5",
-        "twig/twig": "3.20.0",
-        "twig/intl-extra": "3.20.0"
+        "php": "^8.4",
+        "symfony/console": "^8.1",
+        "symfony/error-handler": "^8.1",
+        "symfony/dotenv": "^8.1",
+        "symfony/filesystem": "^8.1",
+        "symfony/framework-bundle": "^8.1",
+        "twig/twig": "^3.28",
+        "twig/intl-extra": "^3.26"
     },
     "autoload": {
         "psr-4": {

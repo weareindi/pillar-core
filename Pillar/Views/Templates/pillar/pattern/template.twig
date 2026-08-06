@@ -1,3 +1,7 @@
+{% set render %}
+    {% include template with data.relative only %}
+{% endset %}
+
 <div class="pillar-pattern">
     <div class="pillar-pattern__upper">
         {% if url is defined %}
@@ -10,7 +14,7 @@
     </div>
 
     <div class="pillar-pattern__render">
-        {% include template with data.relative only %}
+        {{ render|raw }}
     </div>
 
     <div class="pillar-pattern__lower">
@@ -22,7 +26,8 @@
             {% include 'pillar/codeviewer' with {
                 'uid': group|replace({' ' : '-'}) ~ '-' ~ random(),
                 'template': template,
-                'data': data
+                'data': data,
+                'url': url
             } %}
         </div>
     </div>

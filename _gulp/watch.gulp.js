@@ -1,13 +1,9 @@
 module.exports = (gulp, options, plugins) => {
-    gulp.task('watch', gulp.series(
-        gulp.parallel('watch-scss', 'watch-js', 'watch-patterns')
-    ));
-
     gulp.task('watch-scss', () => {
         return gulp.watch([
-            process.env.SCSS_SRC + '**/*.scss',
-            process.env.JS_SRC + '**/*.scss',
-            process.env.PWD + '/public/**/*.scss'
+            plugins.path.join(process.env.SCSS_SRC, '**/*.scss'),
+            plugins.path.join(process.env.JS_SRC, '**/*.scss'),
+            plugins.path.join(process.cwd(), 'public/**/*.scss')
         ], gulp.series(
             gulp.parallel('scss')
         ));
@@ -15,8 +11,8 @@ module.exports = (gulp, options, plugins) => {
 
     gulp.task('watch-js', () => {
         return gulp.watch([
-            process.env.JS_SRC + '**/*.js',
-            process.env.PWD + 'public/**/*.js'
+            plugins.path.join(process.env.JS_SRC, '**/*.js'),
+            plugins.path.join(process.cwd(), 'public/**/*.js')
         ], gulp.series(
             gulp.parallel('js')
         ));
@@ -24,8 +20,12 @@ module.exports = (gulp, options, plugins) => {
 
     gulp.task('watch-patterns', () => {
         return gulp.watch([
-            process.env.PWD + '/public/**/*.json',
-            process.env.PWD + '/public/**/*.twig'
+            plugins.path.join(process.cwd(), 'public/**/*.json'),
+            plugins.path.join(process.cwd(), 'public/**/*.twig')
         ]);
     });
+
+    gulp.task('watch', gulp.series(
+        gulp.parallel('watch-scss', 'watch-js', 'watch-patterns')
+    ));
 };

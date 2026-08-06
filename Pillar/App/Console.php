@@ -46,7 +46,7 @@ class Console {
      */
     protected static function registerCommands() {
         foreach (self::$commands as $command) {
-            self::$console->add($command);
+            self::$console->addCommand($command);
         }
     }
 

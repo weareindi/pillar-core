@@ -1,8 +1,4 @@
-{% set render %}
-    {% include template with data.relative only %}
-{% endset %}
-
-<div class="pillar-codeviewer">
+<div class="pillar-codeviewer" data-codeviewer-url="/patterns/codeviewer?pattern={{ url|url_encode }}">
     {% if template is defined and template is not empty %}
         <input type="checkbox" id="pillar-codeviewer-twig-pre-{{ uid }}" name="pillar-codeviewer-twig-{{ uid }}" class="pillar-codeviewer__switch pillar-codeviewer__switch--twig-pre">
         <input type="checkbox" id="pillar-codeviewer-twig-post-{{ uid }}" name="pillar-codeviewer-twig-{{ uid }}" class="pillar-codeviewer__switch pillar-codeviewer__switch--twig-post">
@@ -22,11 +18,11 @@
         </div>
 
         <div class="pillar-codeviewer__code pillar-codeviewer__code--twig-pre">
-            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--twig"><code>{{ source(template, ignore_missing = true)|trim|escape }}</code></pre>
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--twig"><code></code></pre>
         </div>
 
         <div class="pillar-codeviewer__code pillar-codeviewer__code--twig-post">
-            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--html"><code>{{ render|trim|escape }}</code></pre>
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--html"><code></code></pre>
         </div>
     </div>
     {% endif %}
@@ -40,11 +36,11 @@
         </div>
 
         <div class="pillar-codeviewer__code pillar-codeviewer__code--json-pre">
-            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data.parent|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code></code></pre>
         </div>
 
         <div class="pillar-codeviewer__code pillar-codeviewer__code--json-post">
-            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code>{{ data.relative|json_encode(constant('JSON_PRETTY_PRINT'))|trim|escape }}</code></pre>
+            <pre class="pillar-codeviewer__highlight pillar-codeviewer__highlight--json"><code></code></pre>
         </div>
     </div>
     {% endif %}

@@ -17,7 +17,7 @@ class GenerateTemplateCommand extends Command {
 
     protected static $shortnames = ['g', 'gen', 'make'];
 
-    protected function configure() {
+    protected function configure(): void {
         $this->setName(self::$name);
         $this->setAliases(self::$shortnames);
         $this->setDescription('Generate a pattern');
